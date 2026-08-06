@@ -1,9 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Incognito Vault",
-  "version": "0.1.0",
-  "description": "Export Claude / ChatGPT incognito chats to Markdown (with artifacts), keep a local history, and resume any chat in a fresh incognito session.",
-  "permissions": ["storage", "downloads", "tabs"],
+  "version": "1.0.0",
+  "description": "Save Claude and ChatGPT incognito chats to Markdown with artifacts, keep a private local history, and resume any chat later.",
+  "minimum_chrome_version": "102",
+  "homepage_url": "https://github.com/lkrjangid1/incognito_vault",
+  "permissions": ["storage", "downloads"],
   "host_permissions": [
     "https://claude.ai/*",
     "https://chatgpt.com/*",
@@ -24,7 +26,12 @@
   ],
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "Incognito Vault"
+    "default_title": "Incognito Vault",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "icons": {
     "16": "icons/icon16.png",

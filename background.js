@@ -8,7 +8,11 @@
 "use strict";
 
 // Allow content scripts to read chrome.storage.session (used for resume).
-chrome.storage.session.setAccessLevel({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS" });
+// Guarded: on a browser without setAccessLevel an unhandled rejection here
+// would surface as an error on the extension's card at install time.
+chrome.storage.session
+  ?.setAccessLevel?.({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS" })
+  ?.catch((e) => console.log("[Incognito Vault] storage.session access level:", String(e)));
 
 /* ---------------- IndexedDB ---------------- */
 
@@ -136,8 +140,8 @@ function buildMarkdown(chat) {
       if (a.content) {
         lines.push(`- \`${artifactFile(a, i)}\` — ${a.name}`);
       } else {
-        // Saved into this folder by Claude's own download (§4.8 of the TRD);
-        // the extension depends on the artifact type Claude hands the browser.
+        // Saved into this folder by Claude's own download, so the extension
+        // depends on the artifact type Claude hands the browser.
         lines.push(
           `- \`${artifactStem(a, i)}.*\` — ${a.name}${a.type ? ` (${a.type})` : ""}, downloaded from Claude`
         );
@@ -364,7 +368,12 @@ async function exportChat(payload, tabId) {
 
 const SUPPORTED_URL = /^https:\/\/(claude\.ai|chatgpt\.com|chat\.openai\.com)\//i;
 
-// Popup → SW → content script (the popup has no access to the page DOM).
+/* Popup → SW → content script (the popup has no access to the page DOM).
+ * `tab.url` is readable without the broad "tabs" permission because the
+ * manifest holds host permissions for exactly these three origins — any other
+ * tab comes back with no url, which is the same answer as "unsupported site".
+ * Don't add "tabs" back: it makes the store listing warn about reading the
+ * user's browsing history across every site. */
 async function saveActiveTab() {
   const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
   if (!tab?.id) return { ok: false, error: "No active tab" };

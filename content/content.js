@@ -330,7 +330,7 @@
         artifactNamedNodes: count(panelSelector())
       },
       "\nHTML/React artifacts render inside a sandboxed cross-origin iframe and cannot be read by any extension.",
-      "\nIf iframes is 0 while the panel is open, paste this output in and SELECTORS needs updating (TRD §4.6)."
+      "\nIf iframes is 0 while the panel is open, the SELECTORS object at the top of this file needs updating."
     );
   }
 
@@ -355,8 +355,8 @@
     const artifacts = best ? [best] : [];
 
     /* Everything else the conversation says exists. A ref carries no content —
-     * the file itself comes from Claude's own Download button (§4.8), which is
-     * the only way to get HTML/React artifacts and long files in full. */
+     * the file itself comes from Claude's own Download button, which is the
+     * only way to get HTML/React artifacts and long files in full. */
     try {
       artifactCards = collectArtifactCards();
     } catch (e) {

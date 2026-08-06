@@ -14,7 +14,7 @@ A Chrome (Manifest V3) extension that rescues **Claude incognito** and **ChatGPT
 
 ## Install (developer mode)
 
-The extension isn't on the Chrome Web Store, so you load it from this folder. Takes about a minute.
+The Chrome Web Store listing is still in review, so for now you load the extension from this folder. Takes about a minute.
 
 **Requirements:** Chrome 102+ or any modern Chromium browser (Edge, Brave, Opera, Vivaldi, Arc).
 
@@ -46,7 +46,7 @@ Flip the **Developer mode** toggle — top-right in Chrome, bottom-left sidebar 
 
 Click **Load unpacked** and select the **`incognito-vault` folder itself** — the one that directly contains `manifest.json`. Don't select `content/`, `popup/`, or the `manifest.json` file; picking the wrong level is the most common install error.
 
-A card appears: **Incognito Vault 0.1.0**.
+A card appears: **Incognito Vault 1.0.0**.
 
 ### 5. Pin it to the toolbar
 
@@ -176,7 +176,7 @@ Two consoles matter, and they show different things:
 | "Unknown message" from a popup button | The old service worker is still running — press ↻ on `chrome://extensions`. |
 | No **Save to Vault** button on the page | Reload the tab. If it's still missing, check the extension card for errors. |
 | "No messages found" | The site changed its DOM. Selectors all live in `SELECTORS` at the top of `content/content.js`. |
-| Button says **no artifact** | The page console prints what it scanned. `iframes > 0` means an HTML/React artifact — use Claude's Download button; everything at `0` means the artifact-card markup changed. |
+| Button says **no artifact** | The page console prints what it scanned. `iframes > 0` means an HTML/React artifact — use Claude's Download button; everything at `0` means the artifact-card markup changed (§4.6 in the console hint refers to the notes at the bottom of this file). |
 | A file lands as `download.md` in Downloads | The SW console logs every filename decision — `writing <path>` when it corrects one, or `not renaming "…" (<reason>)`. No line at all means the download event never fired. |
 | Saved but no files | Check `chrome://downloads` for blocked items, and allow multiple downloads from claude.ai if Chrome asked. |
 | Resume opens a tab but nothing pastes | Reload the extension (the handoff needs a live service worker) and retry from the popup — jobs older than 2 minutes are discarded. |
@@ -186,7 +186,23 @@ Two consoles matter, and they show different things:
 
 ## Privacy
 
-No network calls, no analytics, no sync, no accounts. Everything is scraped from the page you're already looking at and written to your own disk. The only permissions requested are `storage`, `downloads` and `tabs`, plus host access to `claude.ai`, `chatgpt.com` and `chat.openai.com`.
+No network calls, no analytics, no sync, no accounts. Everything is read from the page you're already looking at — only when you press save — and written to your own disk.
+
+Two permissions: `storage` (the local history) and `downloads` (writing the files), plus host access to `claude.ai`, `chatgpt.com` and `chat.openai.com`. It deliberately does **not** ask for `tabs`, so it can't see what else you have open.
+
+Full policy: **[PRIVACY.md](PRIVACY.md)**.
+
+---
+
+## Packaging for the Chrome Web Store
+
+```bash
+./package.sh
+```
+
+Writes `dist/incognito-vault-<version>.zip` with `manifest.json` at the root and nothing but the files the extension loads — the docs, `.git` and `.DS_Store` files stay out. It also fails early if `description` in the manifest exceeds the store's 132-character limit, which is otherwise something you discover at upload time.
+
+**[STORE_LISTING.md](STORE_LISTING.md)** holds the rest of the submission: the listing copy, the single-purpose statement, a justification for each permission, the data-usage answers, and the screenshot sizes still to be produced.
 
 ---
 
@@ -211,10 +227,19 @@ content/content.js     Scraper, floating button, artifact cards, resume (SELECTO
 content/content.css    Floating button + toast styles
 popup/                 History UI (list, search, save, resume, delete)
 icons/                 Ghost icons
-TRD.md                 Technical design doc — architecture, contracts, debugging playbook
+package.sh             Builds the Web Store zip (and validates the manifest)
+STORE_LISTING.md       Chrome Web Store submission pack
+PRIVACY.md             Privacy policy
 ```
 
-Working on the code? Read **`TRD.md`** first: it documents the message protocol, the scrape contract, the artifact pipeline, and the non-obvious browser constraints (why downloads use data URLs, why the MIME type decides the file extension, why resume never auto-sends).
+Working on the code? Four browser constraints explain most of what looks strange in it:
+
+1. **Downloads use `data:` URLs.** An MV3 service worker has no `URL.createObjectURL`, so files are base64-encoded into a data URL instead of a blob.
+2. **The MIME type decides the extension, not the filename.** `text/plain` made every file land as `.txt` regardless of what `filename` asked for — `mimeFor()` in `background.js` keeps the two in agreement.
+3. **`filename` is a request, not an instruction.** Chrome can drop it and fall back to `download.md` in the Downloads root. `downloads.onDeterminingFilename` has the final say, so `background.js` re-asserts the intended path from there.
+4. **Resume never auto-sends.** The transcript goes into the composer and stops; sending someone's conversation on their behalf is not a thing an extension should do.
+
+The message protocol between popup, service worker and content script is the `switch` in `background.js`'s `onMessage` listener; every site-specific selector is in the `SELECTORS` object at the top of `content/content.js`.
 
 ---
 
@@ -224,3 +249,11 @@ Working on the code? Read **`TRD.md`** first: it documents the message protocol,
 - Export the whole history as one ZIP
 - Firefox port (`browser.*` namespace, check `storage.session` support)
 - Options page: custom subfolder, transcript-length cap for resume
+
+---
+
+## Licence
+
+[MIT](LICENSE).
+
+Incognito Vault is an independent project. It is not affiliated with, endorsed by, or sponsored by Anthropic, OpenAI, or Google. *Claude* and *ChatGPT* are named only to describe the websites the extension works on.
