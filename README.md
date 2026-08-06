@@ -2,6 +2,9 @@
 
 A Chrome (Manifest V3) extension that rescues **Claude incognito** and **ChatGPT temporary** chats before they vanish:
 
+<img width="379" height="435" alt="image" src="https://github.com/user-attachments/assets/d4b416bc-57cc-4160-b558-bdc1cff7a8d8" />
+
+
 - 📝 Exports the full conversation to **Markdown** (with YAML front-matter) into `Downloads/IncognitoVault/<date>_<title>/`
 - 📎 Saves the currently-open **Claude artifact** as a separate `.md` file alongside the transcript
 - 🗄️ Keeps a **local history** in IndexedDB (inside the extension — nothing leaves your machine)
