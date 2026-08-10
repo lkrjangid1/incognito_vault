@@ -104,7 +104,7 @@
   }
 
   /* An assistant turn embeds a card per artifact it produced. Converting the
-   * card as prose yields "Univest Code · HTML Download"; replace it with a
+   * card as prose yields "Lokesh Code · HTML Download"; replace it with a
    * marker so the transcript records *which* artifact was produced where. */
   function assistantMd(node) {
     const cards = outermostCards(node);

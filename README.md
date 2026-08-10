@@ -158,7 +158,7 @@ Downloads/IncognitoVault/
 └── 2026-08-06_1243_flutter-architecture-layers/
     ├── flutter-architecture-layers.md      ← the transcript
     ├── artifact-1-flutter-diagram.md       ← read from the open panel
-    └── artifact-2-univest.zip              ← downloaded from Claude
+    └── artifact-2-Lokesh.zip              ← downloaded from Claude
 ```
 
 The transcript is portable Markdown:
@@ -185,7 +185,7 @@ Here is how the layers stack up: …
 ## 📎 Artifacts
 
 - `artifact-1-flutter-diagram.md` — Flutter diagram
-- `artifact-2-univest.*` — Univest (Code · HTML), downloaded from Claude
+- `artifact-2-Lokesh.*` — Lokesh (Code · HTML), downloaded from Claude
 ```
 
 **Recommended setting:** if Chrome's **"Ask where to save each file"** (Settings → Downloads) is on, you get one save dialog per file. The name and folder are pre-filled correctly, but turning it off makes saving a chat with several artifacts far less tedious.

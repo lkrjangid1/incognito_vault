@@ -9,7 +9,7 @@ import Cocoa
 import SafariServices
 import WebKit
 
-let extensionBundleIdentifier = "in.univest.incognito-vault.Extension"
+let extensionBundleIdentifier = "com.lkrjangid.incognito-vault.Extension"
 
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
