@@ -110,15 +110,21 @@ h1 {
   white-space: nowrap;
 }
 
+/* Full row width, not just the title column: "claude · Aug 6, 12:43 PM · 6 msgs
+ * · 2 artifacts" does not fit beside the buttons and wrapped mid-phrase, which
+ * left every row a different height. */
 .meta {
-  grid-column: 1;
+  grid-column: 1 / -1;
   color: var(--muted);
   font: 11px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .meta .platform { color: var(--accent); }
 
 .actions {
-  grid-row: 1 / span 2;
+  grid-row: 1;
   grid-column: 2;
   display: flex;
   align-items: center;

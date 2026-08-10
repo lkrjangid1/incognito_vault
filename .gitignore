@@ -3,3 +3,9 @@ dist/
 .DS_Store
 node_modules/
 .claude/settings.local.json
+
+# Xcode (Safari wrapper project)
+xcuserdata/
+*.xcuserstate
+DerivedData/
+safari/xcode/**/build/

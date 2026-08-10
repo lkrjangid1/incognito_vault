@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Incognito Vault</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <div class="mark" aria-hidden="true"></div>
+    <div>
+      <h1>Incognito Vault</h1>
+      <p class="tag">Chats the ghost forgot — you didn't.</p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button id="save-current" type="button" title="Scrape the chat in the active tab and save it to the vault">
+      ＋ Save current chat
+    </button>
+  </div>
+  <p id="status" class="status" hidden></p>
+
+  <input id="search" type="search" placeholder="Search saved chats…" autocomplete="off" />
+
+  <ul id="list" aria-label="Saved chats"></ul>
+
+  <div id="empty" hidden>
+    <p>Nothing in the vault yet.</p>
+    <p class="hint">Open an incognito / temporary chat on claude.ai or chatgpt.com, then hit <b>Save current chat</b> above (or the <b>Save to Vault</b> button at the bottom-right of the page) before closing it.</p>
+  </div>
+
+  <dialog id="confirm-delete" aria-labelledby="confirm-title">
+    <form method="dialog">
+      <h2 id="confirm-title">Delete from vault?</h2>
+      <p id="confirm-text"></p>
+      <p class="hint">The transcript is removed from your local history. Files already downloaded are kept.</p>
+      <div class="dialog-actions">
+        <button value="cancel" autofocus>Cancel</button>
+        <button value="delete" class="del">Delete</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../lib/env.js"></script>
+  <script src="../lib/zip.js"></script>
+  <script src="../lib/download-client.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+#iv-save-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 96px;
+  z-index: 2147483646;
+  padding: 8px 14px;
+  border: 1px solid rgba(126, 224, 184, 0.55);
+  border-radius: 999px;
+  background: rgba(16, 18, 22, 0.92);
+  color: #7ee0b8;
+  font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 120ms ease, background 120ms ease;
+}
+#iv-save-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(22, 26, 32, 0.96);
+}
+#iv-save-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+#iv-save-btn.iv-error {
+  color: #ff9d9d;
+  border-color: rgba(255, 157, 157, 0.55);
+}
+
+#iv-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  max-width: 520px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(16, 18, 22, 0.95);
+  border: 1px solid rgba(126, 224, 184, 0.4);
+  color: #e8e6df;
+  font: 500 13px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+#iv-notice button {
+  margin-left: 10px;
+  padding: 4px 10px;
+  border: 1px solid rgba(126, 224, 184, 0.55);
+  border-radius: 999px;
+  background: transparent;
+  color: #7ee0b8;
+  font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+}
+#iv-notice button:hover {
+  background: rgba(126, 224, 184, 0.12);
+}

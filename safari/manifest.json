@@ -3,15 +3,23 @@
   "name": "Incognito Vault",
   "version": "1.0.0",
   "description": "Save Claude and ChatGPT incognito chats to Markdown with artifacts, keep a private local history, and resume any chat later.",
-  "minimum_chrome_version": "102",
   "homepage_url": "https://github.com/lkrjangid1/incognito_vault",
-  "permissions": ["storage", "downloads"],
+  "permissions": ["storage"],
   "host_permissions": [
     "https://claude.ai/*",
     "https://chatgpt.com/*",
     "https://chat.openai.com/*"
   ],
-  "background": { "service_worker": "background.js" },
+  "background": {
+    "scripts": [
+      "lib/env.js",
+      "background/db.js",
+      "background/export.js",
+      "platform/save.js",
+      "background/resume.js",
+      "background/main.js"
+    ]
+  },
   "content_scripts": [
     {
       "matches": [
@@ -19,7 +27,13 @@
         "https://chatgpt.com/*",
         "https://chat.openai.com/*"
       ],
-      "js": ["content/markdown.js", "content/content.js"],
+      "js": [
+        "lib/env.js",
+        "lib/zip.js",
+        "lib/download-client.js",
+        "content/markdown.js",
+        "content/content.js"
+      ],
       "css": ["content/content.css"],
       "run_at": "document_idle"
     }

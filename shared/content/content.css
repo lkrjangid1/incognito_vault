@@ -42,3 +42,17 @@
   font: 500 13px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
 }
+
+#iv-notice button {
+  margin-left: 10px;
+  padding: 4px 10px;
+  border: 1px solid rgba(126, 224, 184, 0.55);
+  border-radius: 999px;
+  background: transparent;
+  color: #7ee0b8;
+  font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+}
+#iv-notice button:hover {
+  background: rgba(126, 224, 184, 0.12);
+}

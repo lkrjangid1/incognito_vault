@@ -13,12 +13,19 @@ Build the upload with:
 ./package.sh
 ```
 
-It writes `dist/incognito-vault-<version>.zip` containing **only** the files the
-extension needs — no `.git`, no docs, no `.DS_Store`. Upload that zip.
+It writes `dist/incognito-vault-chrome-<version>.zip` containing **only** the
+files the extension needs — no `.git`, no docs, no `.DS_Store`. Upload that zip.
 
 The zip must contain `manifest.json` **at its root**, not inside a nested
-folder. `package.sh` zips from inside a staging directory so this is automatic;
-if you ever zip by hand, select the *files*, not the folder.
+folder. `package.sh` zips from inside the assembled `dist/chrome` directory so
+this is automatic; if you ever zip by hand, select the *files*, not the folder.
+
+> **Safari / Mac App Store:** none of this zip flow applies. The Safari build
+> ships as a Mac app: open `safari/xcode/Incognito Vault/Incognito
+> Vault.xcodeproj`, **Product → Archive**, then notarize for direct download or
+> submit through App Store Connect (paid Apple Developer account). App Store
+> metadata (screenshots, description) is separate from this Chrome pack, and
+> the Chrome screenshot sizes below don't match App Store requirements.
 
 ---
 
@@ -40,63 +47,167 @@ Save Claude and ChatGPT incognito chats to Markdown with artifacts, keep a priva
 **Category:** Productivity → Workflow & Planning
 **Language:** English
 
-**Detailed description**
+**Detailed description** (6960 characters; store limit is 16,000)
 
 ```
-Incognito Vault rescues Claude incognito chats and ChatGPT temporary chats
-before they disappear.
+Some chats are meant to vanish. Then one of them turns out to matter.
 
-Those chats are designed to leave no trace — which is exactly what you want,
-right up until the one conversation you needed is gone. Incognito Vault gives
-you a save button and nothing else changes: the chat stays ephemeral on the
-site, and a copy lands on your own disk.
+Claude's incognito mode and ChatGPT's temporary chats leave nothing behind: no
+history, no sync, nothing attached to your account. That is the entire point of
+them, and it works perfectly — right up until you close the tab and realise the
+answer you needed went with it. There is no undo and no "recently closed". The
+conversation lived in one browser tab, and now it doesn't.
 
-WHAT IT DOES
+Incognito Vault adds a save button and changes nothing else. The chat stays
+ephemeral on the site. A copy lands on your own disk as plain Markdown, in a
+folder you will still be able to open in twenty years with any text editor.
 
-• Save any chat to Markdown — one click, from the button on the page or from
-  the toolbar popup. The transcript is portable Markdown with YAML
-  front-matter, saved to Downloads/IncognitoVault/.
 
-• Bring the artifacts along — Claude artifacts are saved into the same folder
-  as the transcript, including HTML and React ones, which the extension gets by
-  pressing Claude's own download button for you.
+── WHAT IT DOES ──────────────────────────────
 
-• Real file names — ephemeral chats are never named by the site, so the
-  extension writes a title from the conversation itself. You get
-  "how-do-i-fix-a-cors-error" instead of a folder full of "new-chat".
+■ Saves any chat to Markdown, in one click
 
-• A local history — every save is listed in the popup, searchable, with the
-  original transcript kept in the extension's own storage so it survives the
-  chat being closed.
+Click "Save to Vault" at the bottom-right of the page, or open the toolbar
+popup and click "Save current chat". You get a real document: YAML front-matter
+with the title, platform, timestamp and message count, then the conversation
+with speaker headings, every code block fenced and tagged with its language,
+lists and tables and links preserved. It is Markdown, not a screenshot and not
+a wall of unformatted text — it opens in Obsidian, Notion, VS Code, GitHub, or
+Notepad.
 
-• Resume a chat — reopen any saved conversation as a fresh incognito or
-  temporary session with the transcript pre-loaded in the composer. It is never
-  sent automatically; you read it, trim it, and press Enter yourself.
+■ Brings the artifacts with it
 
-PRIVACY
+Claude artifacts are saved into the same folder as the transcript that produced
+them. Code artifacts and diagrams are read straight out of the page. HTML and
+React artifacts — which render inside a sandboxed frame that no extension can
+read — are handled by pressing Claude's own download button for you, so the
+real file arrives complete rather than as a partial copy.
 
-No servers, no accounts, no analytics, no network requests at all. The
-extension reads the conversation on the tab you are looking at, only when you
-press save, and writes it to your own disk. It does not ask for the "tabs"
-permission, so it cannot see what else you have open.
+Claude hands those files to the browser with no name attached, which is why
+saving one by hand gives you "download.md" in your Downloads root. Incognito
+Vault names each file after its artifact and files it next to the transcript
+that references it.
 
-Full policy: https://github.com/lkrjangid1/incognito_vault/blob/main/PRIVACY.md
+■ Gives ephemeral chats a real name
 
-HOW TO USE IT
+An incognito chat is never named by the site, so a naive exporter produces a
+folder full of "new-chat", "new-chat (1)", "new-chat (2)". Incognito Vault
+reads a title out of the conversation itself. Saves land under
+"how-do-i-fix-a-cors-error" or "flutter-architecture-layers" — names you can
+actually search six months later.
 
-1. Open a chat on claude.ai or chatgpt.com — incognito/temporary or not.
-2. Click "Save to Vault" at the bottom-right of the page, or open the toolbar
-   popup and click "Save current chat".
+■ Keeps a local history you can search
+
+Every save is listed in the toolbar popup with its platform, date, message
+count and artifact count. Search by title. Re-download the whole folder —
+transcript and artifacts — any time. Delete an entry when you are done with it,
+with a confirmation step so a mis-click costs you nothing. The full transcript
+is kept in the extension's own storage, so the history survives long after the
+chat itself is gone.
+
+■ Resumes a saved chat
+
+Pick any chat from the history and press Resume. A fresh incognito or temporary
+session opens with the transcript already loaded into the composer, framed as
+context so the assistant picks up the thread instead of starting over.
+
+It is never sent automatically. You read it, trim it if it is enormous, and
+press Enter yourself. Sending someone's conversation on their behalf is not
+something an extension should do.
+
+
+── HOW YOU USE IT ────────────────────────────
+
+1. Open a chat on claude.ai or chatgpt.com — incognito, temporary, or an
+   ordinary one; all of them work.
+2. Click "Save to Vault" on the page, or "Save current chat" in the popup.
 3. The files appear in Downloads/IncognitoVault/<date>_<title>/.
 
-Do it before you close the chat: for an ephemeral conversation, the page is the
-only place it exists.
+The button tells you what it captured — "Saved (12 msgs, 1 artifact)" — so you
+know at a glance whether the artifacts came along.
 
-Open source: https://github.com/lkrjangid1/incognito_vault
+Save before you close the tab. For an ephemeral conversation, the page in front
+of you is the only place it exists.
 
-Incognito Vault is an independent project. It is not affiliated with, endorsed
-by, or sponsored by Anthropic, OpenAI, or Google. "Claude" and "ChatGPT" are
-referred to only to describe which websites the extension works on.
+
+── WHAT LANDS ON DISK ────────────────────────
+
+Downloads/IncognitoVault/
+└── 2026-08-06_1243_flutter-architecture-layers/
+    ├── flutter-architecture-layers.md    (the transcript)
+    ├── artifact-1-layer-diagram.md
+    └── artifact-2-dashboard.html
+
+One folder per chat. Ordinary files that you own, that no application controls,
+that back up and sync and grep like anything else on your computer. Delete them
+whenever you like — the extension neither knows nor cares.
+
+
+── PRIVACY ───────────────────────────────────
+
+No servers. No accounts. No analytics. No sync. No network requests of any
+kind — the extension contains no code that opens a connection, because there is
+nowhere for it to connect to.
+
+It reads the conversation on the tab you are looking at, only at the moment you
+press save, and writes it to your disk. That is the whole data flow.
+
+It asks for two permissions:
+
+• storage — holds your saved-chat history locally
+• downloads — writes the transcript and artifact files to your Downloads folder
+
+Plus access to claude.ai, chatgpt.com and chat.openai.com, which is where the
+conversations are.
+
+It deliberately does NOT request the "tabs" permission. That permission would
+let it see every tab you have open, and it does not need to, so it does not ask
+for it. An extension built to protect private conversations has no business
+watching the rest of your browsing.
+
+Full privacy policy:
+https://github.com/lkrjangid1/incognito_vault/blob/main/PRIVACY.md
+
+The source is public and readable end to end — about 1,500 lines, no build step,
+no minification, no bundled dependencies. You can check every claim above
+yourself:
+https://github.com/lkrjangid1/incognito_vault
+
+
+── HONEST LIMITATIONS ────────────────────────
+
+Things worth knowing before you install, rather than after:
+
+• Resume is not restore. Neither site can genuinely reopen an ephemeral chat.
+  Resume pastes the transcript into a new session as context. A very long chat
+  may exceed the composer or the context window, so trim it first.
+
+• Files go to Downloads/IncognitoVault/. Extensions cannot write anywhere else.
+  Change your browser's download directory, or symlink the folder, if you want
+  them somewhere specific.
+
+• Images are referenced by URL, not downloaded — and incognito image URLs
+  expire, so those links will eventually go dead.
+
+• Claude and ChatGPT redesign their interfaces often. When a redesign breaks
+  scraping, the extension says so plainly instead of silently saving nothing,
+  and the fix is a selector update in one file.
+
+• Uninstalling removes the history. Your downloaded files stay where they are.
+
+
+── WHO IT IS FOR ─────────────────────────────
+
+People who use incognito and temporary chats on purpose — for a salary
+question, a medical worry, a draft resignation letter, a half-formed idea,
+client work that should not be sitting in a chat history — and who occasionally
+need to keep one anyway. You should not have to choose between "this
+conversation is private" and "I can read this again tomorrow".
+
+
+Incognito Vault is an independent open-source project. It is not affiliated
+with, endorsed by, or sponsored by Anthropic, OpenAI, or Google. "Claude" and
+"ChatGPT" are named only to describe the websites the extension works on.
 ```
 
 ---
@@ -164,22 +275,49 @@ check it in a logged-out browser first.
 
 ---
 
-## Graphic assets you still need to make
+## Graphic assets
 
-The code side is done; these are images, and the store will not accept the
-listing without the first one.
+All built and verified as 24-bit RGB PNG with no alpha channel, in
+`store-assets/`.
 
-| Asset | Size | Required | Notes |
-|---|---|---|---|
-| Store icon | 128×128 PNG | ✅ have it | `icons/icon128.png` |
-| Screenshot | 1280×800 or 640×400 PNG | ✅ **at least 1**, up to 5 | No browser chrome, no transparency |
-| Small promo tile | 440×280 PNG | Optional | Needed to be featured |
-| Marquee promo tile | 1400×560 PNG | Optional | Featured placement only |
+| Asset | Size | File |
+|---|---|---|
+| Store icon | 128×128 | `icons/icon128.png` |
+| Screenshot 1 | 1280×800 | `store-assets/shot-1-history.png` |
+| Screenshot 2 | 1280×800 | `store-assets/shot-2-save.png` |
+| Screenshot 3 | 1280×800 | `store-assets/shot-3-disk.png` |
+| Screenshot 4 | 1280×800 | `store-assets/shot-4-artifacts.png` |
+| Screenshot 5 | 1280×800 | `store-assets/shot-5-resume.png` |
+| Small promo tile | 440×280 | `store-assets/tile-small.png` |
+| Marquee promo tile | 1400×560 | `store-assets/tile-marquee.png` |
 
-Screenshots that make the case, in order: the popup with a few saved chats; the
-"Save to Vault" button on a real Claude chat; the `Downloads/IncognitoVault/`
-folder showing a transcript next to its artifacts; a saved `.md` open in an
-editor. Screenshots must show the actual extension — mockups get rejected.
+**Upload the screenshots in numbered order.** The first one is what appears in
+search results and above the fold, so it carries the pitch on its own; the rest
+answer the questions it raises.
+
+| # | Shows | Says |
+|---|---|---|
+| 1 | The popup with five saved chats | Incognito chats are gone forever — unless you keep one |
+| 2 | The popup mid-save, plus the in-page button | One click, before you close the tab |
+| 3 | The folder tree beside a real transcript | Plain Markdown, your disk |
+| 4 | The three-step artifact pipeline | Artifacts come too, including HTML/React |
+| 5 | The popup with the resume toast | Pick it back up where you left off |
+
+The popup in screenshots 1, 2 and 5 is rendered from the extension's own
+`popup.css` and the exact markup `popup.js` produces; the in-page button and
+toast come from `content.css`. Nothing is a redrawn mockup — which matters,
+because the store rejects screenshots that don't show the real product.
+
+**Regenerating them after a UI change:** the screenshots load the live CSS, so
+re-running the generator picks up any styling change automatically. Ask for the
+generator script if it isn't in the repo yet — it renders each canvas in
+headless Chrome at 2× and downsamples to the exact store dimensions.
+
+**Optionally add a sixth:** a real capture from your own browser — the popup
+open over an actual claude.ai chat with the Save to Vault button visible. It is
+the one shot that proves the extension runs in situ, and only you can take it.
+Cmd+Shift+4 then Space captures a single window; scale it to 1280×800 and
+flatten the alpha before uploading.
 
 ---
 
@@ -193,8 +331,8 @@ editor. Screenshots must show the actual extension — mockups get rejected.
 - [x] No remote code, no inline scripts, default MV3 CSP
 - [x] Privacy policy written and committed
 - [x] Trademark disclaimer in the listing description
+- [x] Screenshots and promo tiles built (1280×800 / 440×280 / 1400×560, 24-bit RGB, no alpha)
 - [ ] Zip built with `./package.sh` and uploaded
-- [ ] At least one 1280×800 screenshot uploaded
 - [ ] Privacy policy URL live and publicly reachable
 - [ ] Developer account verified with a contact email (a one-off $5 registration fee applies to new accounts)
 

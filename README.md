@@ -1,6 +1,6 @@
 # Incognito Vault
 
-A Chrome (Manifest V3) extension that rescues **Claude incognito** and **ChatGPT temporary** chats before they vanish.
+A **Chrome (Manifest V3)** and **Safari (Web Extension)** extension that rescues **Claude incognito** and **ChatGPT temporary** chats before they vanish. One shared codebase (`shared/`), with a thin platform layer per browser (`chrome/`, `safari/`).
 
 <img width="379" height="435" alt="image" src="https://github.com/user-attachments/assets/d4b416bc-57cc-4160-b558-bdc1cff7a8d8" />
 
@@ -18,12 +18,12 @@ The Chrome Web Store listing is still in review, so for now you load the extensi
 
 **Requirements:** Chrome 102+ or any modern Chromium browser (Edge, Brave, Opera, Vivaldi, Arc).
 
-### 1. Get the folder
+### 1. Get the folder and build it
 
-Download or clone this repository somewhere permanent — **Chrome loads it from this path every time it starts, so don't put it in a temp folder or delete it afterwards.**
+Download or clone this repository somewhere permanent — **Chrome loads the built folder from this path every time it starts, so don't put it in a temp folder or delete it afterwards.** Then assemble the extension (plain file copies, no bundler — the only tool it needs is `node` on your PATH):
 
-```
-~/Desktop/incognito-vault/     ← the folder containing manifest.json
+```bash
+./build.sh chrome      # assembles shared/ + chrome/ into dist/chrome
 ```
 
 ### 2. Open the extensions page
@@ -44,7 +44,7 @@ Flip the **Developer mode** toggle — top-right in Chrome, bottom-left sidebar 
 
 ### 4. Load unpacked
 
-Click **Load unpacked** and select the **`incognito-vault` folder itself** — the one that directly contains `manifest.json`. Don't select `content/`, `popup/`, or the `manifest.json` file; picking the wrong level is the most common install error.
+Click **Load unpacked** and select the **`dist/chrome` folder** — the one that directly contains the assembled `manifest.json`. Don't select the repo root, `shared/`, or the `manifest.json` file; picking the wrong level is the most common install error.
 
 A card appears: **Incognito Vault 1.0.0**.
 
@@ -60,9 +60,9 @@ Click the 🧩 puzzle-piece icon in the toolbar → find *Incognito Vault* → c
 
 ### Updating after you edit the code
 
-Press the **↻ reload** icon on the extension's card on `chrome://extensions`.
+Run `./build.sh chrome` (Chrome loads `dist/chrome`, not the source tree), then press the **↻ reload** icon on the extension's card on `chrome://extensions`.
 
-This matters more than it sounds: Chrome keeps running the **old service worker** until you reload, so edits to `background.js` appear to do nothing and popup actions fail with **"Unknown message"**. Popup and content-script changes need the reload too, plus a page refresh for content scripts.
+This matters more than it sounds: Chrome keeps running the **old service worker** until you reload, so edits to the background code appear to do nothing and popup actions fail with **"Unknown message"**. Popup and content-script changes need the rebuild + reload too, plus a page refresh for content scripts.
 
 ### Chrome's own Incognito windows (optional)
 
@@ -73,6 +73,34 @@ You don't need this for normal use: Claude's incognito chat and ChatGPT's tempor
 ### Removing it
 
 **Remove** on the extension card. Your downloaded files stay; the IndexedDB history goes with the extension.
+
+---
+
+## Install on Safari (macOS)
+
+Safari extensions ship inside a small Mac app, so this one builds from an Xcode project (already generated and committed under `safari/xcode/`).
+
+**Requirements:** macOS with Xcode installed, Safari 16.4+.
+
+1. `./build.sh safari` — assembles `dist/safari` and syncs it into the Xcode project's Resources.
+2. Open `safari/xcode/Incognito Vault/Incognito Vault.xcodeproj`, select your (personal) team under *Signing & Capabilities* for both targets, then **⌘R**. The wrapper app launches and offers to open Safari's extension settings.
+3. In Safari: **Settings → Advanced → Show features for web developers**, then **Settings → Developer → Allow unsigned extensions** (this toggle resets every time Safari quits — re-tick it after a relaunch).
+4. **Settings → Extensions → Incognito Vault** — enable it.
+5. Visit claude.ai and chatgpt.com, click the extension's toolbar icon, and choose **Always Allow on This Website** — Safari grants host access per site, and nothing runs until you do.
+
+After editing code: `./build.sh safari`, then **⌘R** in Xcode again.
+
+### How Safari behaves differently
+
+Safari has no `downloads` API, so the save layer works differently there:
+
+| | Chrome | Safari |
+|---|---|---|
+| Save output | Individual files in `Downloads/IncognitoVault/<chat>/` | One `IncognitoVault_<chat>.zip` in Downloads — unzips to the identical folder |
+| HTML/React artifacts | Fetched by pressing Claude's own Download button, filed into the folder | Not auto-captured — the transcript lists them and you press Claude's Download button yourself |
+| Everything else | identical | identical |
+
+Debug consoles in Safari: the background page lives under **Develop → Web Extension Background Content**; content-script logs are in the page's own console.
 
 ---
 
@@ -175,7 +203,7 @@ Two consoles matter, and they show different things:
 |---|---|
 | "Unknown message" from a popup button | The old service worker is still running — press ↻ on `chrome://extensions`. |
 | No **Save to Vault** button on the page | Reload the tab. If it's still missing, check the extension card for errors. |
-| "No messages found" | The site changed its DOM. Selectors all live in `SELECTORS` at the top of `content/content.js`. |
+| "No messages found" | The site changed its DOM. Selectors all live in `SELECTORS` at the top of `shared/content/content.js`. |
 | Button says **no artifact** | The page console prints what it scanned. `iframes > 0` means an HTML/React artifact — use Claude's Download button; everything at `0` means the artifact-card markup changed (§4.6 in the console hint refers to the notes at the bottom of this file). |
 | A file lands as `download.md` in Downloads | The SW console logs every filename decision — `writing <path>` when it corrects one, or `not renaming "…" (<reason>)`. No line at all means the download event never fired. |
 | Saved but no files | Check `chrome://downloads` for blocked items, and allow multiple downloads from claude.ai if Chrome asked. |
@@ -194,13 +222,16 @@ Full policy: **[PRIVACY.md](PRIVACY.md)**.
 
 ---
 
-## Packaging for the Chrome Web Store
+## Packaging
 
 ```bash
-./package.sh
+./build.sh             # assembles dist/chrome and dist/safari (dev builds)
+./package.sh           # Chrome Web Store upload: dist/incognito-vault-chrome-<version>.zip
 ```
 
-Writes `dist/incognito-vault-<version>.zip` with `manifest.json` at the root and nothing but the files the extension loads — the docs, `.git` and `.DS_Store` files stay out. It also fails early if `description` in the manifest exceeds the store's 132-character limit, which is otherwise something you discover at upload time.
+`package.sh` writes the zip with `manifest.json` at the root and nothing but the files the extension loads — the docs, `.git` and `.DS_Store` files stay out. `build.sh` fails early if either manifest's `description` exceeds the store's 132-character limit or the two platforms' versions drift apart, which is otherwise something you discover at upload time.
+
+**Safari distribution is never a zip**: archive in Xcode (**Product → Archive**) and either notarize for direct download or submit to the App Store (paid Apple Developer account required).
 
 **[STORE_LISTING.md](STORE_LISTING.md)** holds the rest of the submission: the listing copy, the single-purpose statement, a justification for each permission, the data-usage answers, and the screenshot sizes still to be produced.
 
@@ -208,7 +239,7 @@ Writes `dist/incognito-vault-<version>.zip` with `manifest.json` at the root and
 
 ## Known limitations
 
-1. **DOM selectors are brittle.** Claude and ChatGPT ship UI changes constantly. Site-specific selectors live in one `SELECTORS` object at the top of `content/content.js` — if scraping breaks, that's the only place you should need to edit.
+1. **DOM selectors are brittle.** Claude and ChatGPT ship UI changes constantly. Site-specific selectors live in one `SELECTORS` object at the top of `shared/content/content.js` — if scraping breaks, that's the only place you should need to edit.
 2. **Resume ≠ restore.** Neither site can literally reopen an ephemeral chat. Resume pastes the transcript as context into a new session; very long chats may exceed the composer or context limit, so trim before sending.
 3. **Files go to `Downloads/IncognitoVault/`.** Extensions can't write elsewhere. Change your browser's download directory or symlink the folder if you want them somewhere else.
 4. **One panel artifact per save.** Only the artifact currently open in the side panel is read directly; the rest arrive through Claude's Download button. Long files in the panel's code view may be truncated (CodeMirror only keeps visible lines in the DOM) — the console warns when it detects this, and the downloaded file is always complete.
@@ -220,34 +251,50 @@ Writes `dist/incognito-vault-<version>.zip` with `manifest.json` at the root and
 ## File map
 
 ```
-manifest.json          MV3 config: permissions, content scripts, SW, popup
-background.js          Service worker: IndexedDB, Markdown builder, downloads, resume
-content/markdown.js    Dependency-free HTML → Markdown converter
-content/content.js     Scraper, floating button, artifact cards, resume (SELECTORS here)
-content/content.css    Floating button + toast styles
-popup/                 History UI (list, search, save, resume, delete)
-icons/                 Ghost icons
-package.sh             Builds the Web Store zip (and validates the manifest)
-STORE_LISTING.md       Chrome Web Store submission pack
-PRIVACY.md             Privacy policy
+shared/                          Everything platform-neutral (the bulk of the code)
+  background/db.js               IndexedDB history layer
+  background/export.js           slug/stamp/Markdown builders
+  background/resume.js           Resume flow + job handoff
+  background/main.js             Export orchestration, popup save, message router
+  content/markdown.js            Dependency-free HTML → Markdown converter
+  content/content.js             Scraper, floating button, artifact cards, resume (SELECTORS here)
+  content/content.css            Floating button + toast styles
+  popup/                         History UI (list, search, save, resume, delete)
+  lib/env.js                     IV namespace + browser/chrome API shim (loaded first everywhere)
+  lib/zip.js                     Store-only ZIP writer (Safari saves; inert on Chrome)
+  lib/download-client.js         Blob+anchor ZIP download from the calling DOM context
+  icons/                         Ghost icons
+chrome/
+  manifest.json                  MV3: service worker background, "downloads" permission
+  background.js                  importScripts() loader for the shared modules
+  platform/save.js               chrome.downloads save layer + artifact filename interception
+safari/
+  manifest.json                  MV3: background.scripts page, no "downloads"
+  platform/save.js               Returns the export as a ZIP bundle for the caller to save
+  xcode/                         Generated Xcode project (wrapper app + extension)
+build.sh                         Assembles dist/chrome + dist/safari, syncs Xcode Resources
+package.sh                       Builds the Chrome Web Store zip
+STORE_LISTING.md                 Chrome Web Store submission pack
+PRIVACY.md                       Privacy policy
 ```
 
-Working on the code? Four browser constraints explain most of what looks strange in it:
+Working on the code? A few browser constraints explain most of what looks strange in it:
 
-1. **Downloads use `data:` URLs.** An MV3 service worker has no `URL.createObjectURL`, so files are base64-encoded into a data URL instead of a blob.
-2. **The MIME type decides the extension, not the filename.** `text/plain` made every file land as `.txt` regardless of what `filename` asked for — `mimeFor()` in `background.js` keeps the two in agreement.
-3. **`filename` is a request, not an instruction.** Chrome can drop it and fall back to `download.md` in the Downloads root. `downloads.onDeterminingFilename` has the final say, so `background.js` re-asserts the intended path from there.
-4. **Resume never auto-sends.** The transcript goes into the composer and stops; sending someone's conversation on their behalf is not a thing an extension should do.
+1. **Chrome downloads use `data:` URLs.** An MV3 service worker has no `URL.createObjectURL`, so files are base64-encoded into a data URL instead of a blob.
+2. **The MIME type decides the extension, not the filename.** `text/plain` made every file land as `.txt` regardless of what `filename` asked for — `mimeFor()` in `chrome/platform/save.js` keeps the two in agreement.
+3. **`filename` is a request, not an instruction.** Chrome can drop it and fall back to `download.md` in the Downloads root. `downloads.onDeterminingFilename` has the final say, so `chrome/platform/save.js` re-asserts the intended path from there.
+4. **Safari has no downloads API at all.** Its save layer returns the files to whichever DOM context the user clicked in, which zips them (`shared/lib/zip.js`) and clicks a blob link — a download must ride on a real user gesture there.
+5. **Resume never auto-sends.** The transcript goes into the composer and stops; sending someone's conversation on their behalf is not a thing an extension should do.
 
-The message protocol between popup, service worker and content script is the `switch` in `background.js`'s `onMessage` listener; every site-specific selector is in the `SELECTORS` object at the top of `content/content.js`.
+The message protocol between popup, background and content script is the `switch` in `shared/background/main.js`; every site-specific selector is in the `SELECTORS` object at the top of `shared/content/content.js`.
 
 ---
 
 ## Roadmap ideas
 
 - Auto-save on an interval while an ephemeral chat is open (crash insurance)
-- Export the whole history as one ZIP
-- Firefox port (`browser.*` namespace, check `storage.session` support)
+- Export the whole history as one ZIP (the ZIP writer from the Safari port — `shared/lib/zip.js` — makes this cheap now)
+- Firefox port — the `shared/` + platform-layer split from the Safari port does most of the work; Firefox would reuse the Safari save layer
 - Options page: custom subfolder, transcript-length cap for resume
 
 ---

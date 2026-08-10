@@ -1,7 +1,7 @@
 # Privacy Policy — Incognito Vault
 
-**Last updated:** 6 August 2026
-**Applies to:** Incognito Vault, Chrome extension, version 1.0.0
+**Last updated:** 10 August 2026
+**Applies to:** Incognito Vault, Chrome extension and Safari web extension, version 1.0.0
 
 ## Summary
 
@@ -28,7 +28,9 @@ Two places, both local to your computer:
 
 1. **A file on your disk** — a Markdown transcript, plus any artifact files,
    written to `Downloads/IncognitoVault/` through Chrome's own download
-   mechanism. These are ordinary files that you own and can delete at any time.
+   mechanism (on Safari, the same files arrive as a single ZIP in your
+   Downloads folder). These are ordinary files that you own and can delete at
+   any time.
 2. **The extension's local database** — an IndexedDB store inside the
    extension's own origin, so the history survives after the ephemeral chat is
    gone. It is removed when you delete an entry in the popup, and it is removed
@@ -44,7 +46,7 @@ the page you are on, never to send anything.
 | Permission | Why |
 |---|---|
 | `storage` | Holds the saved-chat history locally, and briefly holds a transcript in session storage while a "resume" hands it to a new tab. |
-| `downloads` | Writes the Markdown transcript and artifact files to your Downloads folder, and files artifacts Claude downloads into the right chat folder. |
+| `downloads` | Chrome only — writes the Markdown transcript and artifact files to your Downloads folder, and files artifacts Claude downloads into the right chat folder. The Safari version does not request it (Safari has no such API); its ZIP arrives as an ordinary page-initiated download. |
 | `https://claude.ai/*`, `https://chatgpt.com/*`, `https://chat.openai.com/*` | Lets the extension read the conversation on those pages — the only thing it does. |
 
 The extension deliberately does **not** request the `tabs` permission, which

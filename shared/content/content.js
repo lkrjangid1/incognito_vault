@@ -522,7 +522,10 @@
       }
       btn.disabled = true;
       try {
-        const res = await chrome.runtime.sendMessage({ type: "EXPORT_CHAT", payload });
+        const res = await IV.api.runtime.sendMessage({ type: "EXPORT_CHAT", payload });
+        // Safari: no downloads API in the background — the files come back as
+        // a bundle and this click's context saves them as one ZIP.
+        if (res?.download) await IV.downloadZip(res.download);
         const n = payload.artifacts.length;
         // Claude always reports the artifact state — "no artifact" is the
         // signal that the panel wasn't open (or the selectors need a look).
@@ -580,53 +583,63 @@
     return false;
   }
 
+  /* The pending job lives in the background's private stash — content scripts
+   * can't read storage.session themselves (Safari has no setAccessLevel), so
+   * ask for it over messaging. The background hands it out once, and only to
+   * a tab of the matching platform. */
   async function handleResumeIfPending() {
-    let stash;
+    let res;
     try {
-      stash = await chrome.storage.session.get("iv_resume");
+      res = await IV.api.runtime.sendMessage({ type: "GET_RESUME", platform: PLATFORM });
     } catch {
       return;
     }
-    const job = stash?.iv_resume;
-    if (!job || job.platform !== PLATFORM) return;
-    if (Date.now() - job.createdAt > 2 * 60 * 1000) {
-      chrome.storage.session.remove("iv_resume");
-      return;
-    }
-    chrome.storage.session.remove("iv_resume");
+    if (!res?.ok || !res.job) return;
+    const job = res.job;
 
     if (PLATFORM === "claude") {
       const ok = await tryEnableClaudeIncognito();
-      if (!ok) notice("Couldn't find the incognito (ghost) button — click it manually, then paste. Transcript copied to clipboard.");
+      if (!ok) notice("Couldn't find the incognito (ghost) button — click it manually before sending.");
     }
     // Give the composer a moment to mount after any mode switch.
     await new Promise((r) => setTimeout(r, 800));
     const inserted = insertIntoComposer(job.prompt);
     if (!inserted) {
-      try {
-        await navigator.clipboard.writeText(job.prompt);
-        notice("Composer not found — transcript copied to clipboard, paste it manually.");
-      } catch {
-        notice("Composer not found and clipboard blocked. Re-open the chat from the Vault popup.");
-      }
+      // navigator.clipboard needs a user gesture and this runs long after the
+      // tab opened (Safari enforces that hard) — offer a click-to-copy instead.
+      notice("Composer not found — copy the transcript and paste it manually.", {
+        label: "Copy transcript",
+        onClick: async (e) => {
+          await navigator.clipboard.writeText(job.prompt);
+          e.target.textContent = "Copied ✓";
+        }
+      });
     } else {
       notice("Transcript inserted. Review it, then press Enter to continue the conversation.");
     }
   }
 
-  function notice(text) {
+  function notice(text, action) {
+    document.getElementById("iv-notice")?.remove();
     const n = document.createElement("div");
     n.id = "iv-notice";
     n.textContent = text;
+    if (action) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = action.label;
+      b.addEventListener("click", action.onClick);
+      n.appendChild(b);
+    }
     document.documentElement.appendChild(n);
-    setTimeout(() => n.remove(), 6000);
+    setTimeout(() => n.remove(), action ? 20000 : 6000);
   }
 
   /* ---------------- Popup-initiated save ----------------
    * The popup can't touch the page DOM, so it asks the service worker,
    * which forwards SCRAPE_CHAT here and does the export/persist itself.
    */
-  chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  IV.api.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     if (msg?.type === "SCRAPE_CHAT") {
       try {
         sendResponse({ ok: true, payload: scrape() });

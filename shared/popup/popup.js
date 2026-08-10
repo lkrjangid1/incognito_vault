@@ -49,7 +49,9 @@ function render() {
     resume.title = "Open a fresh incognito/temporary chat pre-filled with this transcript";
 
     const dl = btn(".md", "", async () => {
-      await send({ type: "REDOWNLOAD_CHAT", id: c.id });
+      const res = await send({ type: "REDOWNLOAD_CHAT", id: c.id });
+      // Safari: the export comes back as a bundle — save it as one ZIP here.
+      if (res?.download) await IV.downloadZip(res.download);
     });
     dl.title = "Download the Markdown export again";
 
@@ -93,7 +95,7 @@ function btn(label, cls, onClick) {
 }
 
 function send(msg) {
-  return chrome.runtime.sendMessage(msg);
+  return IV.api.runtime.sendMessage(msg);
 }
 
 async function load() {
@@ -123,6 +125,8 @@ saveEl.addEventListener("click", async () => {
   try {
     const res = await send({ type: "SAVE_ACTIVE_TAB" });
     if (res?.ok) {
+      // Safari: the export comes back as a bundle — save it as one ZIP here.
+      if (res.download) await IV.downloadZip(res.download);
       const n = res.artifactCount || 0;
       const artifactNote = n
         ? ` · ${n} artifact${n > 1 ? "s" : ""}`
