@@ -50,8 +50,8 @@ function render() {
 
     const dl = btn(".md", "", async () => {
       const res = await send({ type: "REDOWNLOAD_CHAT", id: c.id });
-      // Safari: the export comes back as a bundle — save it as one ZIP here.
-      if (res?.download) await IV.downloadZip(res.download);
+      // Safari: the export comes back as a bundle — save it via the download tab.
+      if (res?.download) await openDownloader(c.id);
     });
     dl.title = "Download the Markdown export again";
 
@@ -98,6 +98,15 @@ function send(msg) {
   return IV.api.runtime.sendMessage(msg);
 }
 
+/* Safari saves arrive as a ZIP bundle, but this popup is the wrong place to
+ * build it: iOS kills the popup the instant Safari takes focus, and a blob URL
+ * dies with its creating context (→ "WebKitBlobResource error 1"). Hand the
+ * chat id to downloader.html in a real tab, whose context stays alive. */
+async function openDownloader(id) {
+  await IV.api.tabs.create({ url: IV.api.runtime.getURL(`popup/downloader.html?id=${id}`) });
+  window.close();
+}
+
 async function load() {
   const res = await send({ type: "LIST_CHATS" });
   chats = res?.chats || [];
@@ -125,8 +134,9 @@ saveEl.addEventListener("click", async () => {
   try {
     const res = await send({ type: "SAVE_ACTIVE_TAB" });
     if (res?.ok) {
-      // Safari: the export comes back as a bundle — save it as one ZIP here.
-      if (res.download) await IV.downloadZip(res.download);
+      // Safari: the export comes back as a bundle — save it via the download tab.
+      // (The chat is already in the vault at this point; the tab re-reads it.)
+      if (res.download) return await openDownloader(res.id);
       const n = res.artifactCount || 0;
       const artifactNote = n
         ? ` · ${n} artifact${n > 1 ? "s" : ""}`

@@ -95,7 +95,7 @@ Safari extensions ship inside a small app, so this one builds from an Xcode proj
 1. `./build.sh safari`, open the same project, pick the **Incognito Vault (iOS)** scheme and a simulator or your device (a device needs your team set on both iOS targets), then **⌘R**.
 2. On the device: **Settings → Apps → Safari → Extensions → Incognito Vault** — turn it on (on a simulator: Safari → the **ᴀA** / puzzle menu in the address bar → Manage Extensions).
 3. Open claude.ai or chatgpt.com in Safari, tap the extension in the address-bar menu, and choose **Always Allow on This Website**.
-4. Saved ZIPs land in Safari's download manager — **Files → Downloads** by default.
+4. Saves from the popup open a small **Save ZIP** tab — tap its button and the ZIP lands in Safari's download manager (**Files → Downloads** by default). The popup can't serve the ZIP itself: iOS destroys the popup the moment Safari takes focus, and a blob URL dies with the context that created it.
 
 After editing code: `./build.sh safari`, then **⌘R** in Xcode again — both schemes pick up the synced resources.
 

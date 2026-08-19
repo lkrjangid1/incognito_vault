@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Incognito Vault — Save ZIP</title>
+  <style>
+    :root {
+      --ink: #101216;
+      --panel: #191c22;
+      --line: #262b33;
+      --text: #e8e6df;
+      --muted: #8a8f98;
+      --accent: #7ee0b8;
+      --danger: #ff9d9d;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--ink);
+      color: var(--text);
+      font: 16px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    main {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .mark {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 14px;
+      border-radius: 50% 50% 45% 45%;
+      background:
+        radial-gradient(circle at 32% 30%, var(--ink) 4px, transparent 5px),
+        radial-gradient(circle at 66% 30%, var(--ink) 4px, transparent 5px),
+        linear-gradient(180deg, var(--accent) 55%, transparent 100%);
+    }
+    h1 { font-size: 17px; font-weight: 700; letter-spacing: 0.02em; }
+    #name {
+      margin-top: 10px;
+      color: var(--muted);
+      font: 13px ui-monospace, SFMono-Regular, Menlo, monospace;
+      overflow-wrap: anywhere;
+    }
+    #save {
+      margin-top: 22px;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--accent);
+      background: rgba(126, 224, 184, 0.08);
+      color: var(--accent);
+      font: 700 16px/1.2 inherit;
+      cursor: pointer;
+    }
+    #save:active { background: rgba(126, 224, 184, 0.2); }
+    #status { margin-top: 16px; font-size: 14px; color: var(--muted); }
+    #status.ok { color: var(--accent); }
+    #status.error { color: var(--danger); }
+    .hint { margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true"></div>
+    <h1>Incognito Vault</h1>
+    <p id="name"></p>
+    <button id="save" hidden>Save ZIP</button>
+    <p id="status">Preparing your ZIP…</p>
+    <p class="hint">On iPhone and iPad the share sheet opens — choose <b>Save to Files</b>. On a Mac the ZIP goes straight to your downloads. You can close this tab afterwards.</p>
+  </main>
+  <script src="../lib/env.js"></script>
+  <script src="../lib/zip.js"></script>
+  <script src="../lib/download-client.js"></script>
+  <script src="downloader.js"></script>
+</body>
+</html>

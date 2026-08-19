@@ -16,8 +16,9 @@
     (document.body || document.documentElement).appendChild(a);
     a.click();
     a.remove();
-    // Revoking too early cancels the download in Safari — give it a moment.
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    // Revoking too early cancels the download in Safari, and iOS's download
+    // manager can be slow to actually fetch the blob — give it a long grace.
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
   }
 
   IV.downloadZip = downloadZip;
