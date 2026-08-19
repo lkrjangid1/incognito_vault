@@ -1,8 +1,8 @@
 //
 //  SafariWebExtensionHandler.swift
-//  Incognito Vault Extension
+//  Shared (Extension)
 //
-//  Created by Macbook on 10/08/26.
+//  Created by Macbook on 19/08/26.
 //
 
 import SafariServices

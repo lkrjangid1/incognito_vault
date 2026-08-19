@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Incognito Vault
+//  macOS (App)
 //
-//  Created by Macbook on 10/08/26.
+//  Created by Macbook on 19/08/26.
 //
 
 import Cocoa

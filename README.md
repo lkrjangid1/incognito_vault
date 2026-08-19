@@ -76,19 +76,28 @@ You don't need this for normal use: Claude's incognito chat and ChatGPT's tempor
 
 ---
 
-## Install on Safari (macOS)
+## Install on Safari (macOS, iOS, iPadOS)
 
-Safari extensions ship inside a small Mac app, so this one builds from an Xcode project (already generated and committed under `safari/xcode/`).
+Safari extensions ship inside a small app, so this one builds from an Xcode project (already generated and committed under `safari/xcode/`). The project is multiplatform: schemes **Incognito Vault (macOS)** and **Incognito Vault (iOS)** share one copy of the extension in `Shared (Extension)/Resources`, so all three platforms run the same code.
 
-**Requirements:** macOS with Xcode installed, Safari 16.4+.
+**Requirements:** macOS with Xcode installed; Safari 16.4+ on the Mac, iOS/iPadOS 15+ on devices.
+
+### macOS
 
 1. `./build.sh safari` — assembles `dist/safari` and syncs it into the Xcode project's Resources.
-2. Open `safari/xcode/Incognito Vault/Incognito Vault.xcodeproj`, select your (personal) team under *Signing & Capabilities* for both targets, then **⌘R**. The wrapper app launches and offers to open Safari's extension settings.
+2. Open `safari/xcode/Incognito Vault/Incognito Vault.xcodeproj`, pick the **Incognito Vault (macOS)** scheme, select your (personal) team under *Signing & Capabilities* for both macOS targets, then **⌘R**. The wrapper app launches and offers to open Safari's extension settings.
 3. In Safari: **Settings → Advanced → Show features for web developers**, then **Settings → Developer → Allow unsigned extensions** (this toggle resets every time Safari quits — re-tick it after a relaunch).
 4. **Settings → Extensions → Incognito Vault** — enable it.
 5. Visit claude.ai and chatgpt.com, click the extension's toolbar icon, and choose **Always Allow on This Website** — Safari grants host access per site, and nothing runs until you do.
 
-After editing code: `./build.sh safari`, then **⌘R** in Xcode again.
+### iOS / iPadOS
+
+1. `./build.sh safari`, open the same project, pick the **Incognito Vault (iOS)** scheme and a simulator or your device (a device needs your team set on both iOS targets), then **⌘R**.
+2. On the device: **Settings → Apps → Safari → Extensions → Incognito Vault** — turn it on (on a simulator: Safari → the **ᴀA** / puzzle menu in the address bar → Manage Extensions).
+3. Open claude.ai or chatgpt.com in Safari, tap the extension in the address-bar menu, and choose **Always Allow on This Website**.
+4. Saved ZIPs land in Safari's download manager — **Files → Downloads** by default.
+
+After editing code: `./build.sh safari`, then **⌘R** in Xcode again — both schemes pick up the synced resources.
 
 ### How Safari behaves differently
 

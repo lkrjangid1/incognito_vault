@@ -7,43 +7,80 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA5A108330299CD8003E0116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A108230299CD8003E0116 /* AppDelegate.swift */; };
-		FA5A108730299CD8003E0116 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = FA5A108530299CD8003E0116 /* Main.html */; };
-		FA5A108930299CD8003E0116 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5A108830299CD8003E0116 /* Icon.png */; };
-		FA5A108B30299CD8003E0116 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = FA5A108A30299CD8003E0116 /* Style.css */; };
-		FA5A108D30299CD8003E0116 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = FA5A108C30299CD8003E0116 /* Script.js */; };
-		FA5A108F30299CD8003E0116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A108E30299CD8003E0116 /* ViewController.swift */; };
-		FA5A109230299CD8003E0116 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5A109030299CD8003E0116 /* Main.storyboard */; };
-		FA5A109430299CD9003E0116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5A109330299CD9003E0116 /* Assets.xcassets */; };
-		FA5A109B30299CD9003E0116 /* Incognito Vault Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FA5A109A30299CD9003E0116 /* Incognito Vault Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FA5A10A030299CD9003E0116 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A109F30299CD9003E0116 /* SafariWebExtensionHandler.swift */; };
-		FA5A10B330299CD9003E0116 /* background in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10AC30299CD9003E0116 /* background */; };
-		FA5A10B430299CD9003E0116 /* popup in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10AD30299CD9003E0116 /* popup */; };
-		FA5A10B530299CD9003E0116 /* platform in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10AE30299CD9003E0116 /* platform */; };
-		FA5A10B630299CD9003E0116 /* content in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10AF30299CD9003E0116 /* content */; };
-		FA5A10B730299CD9003E0116 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10B030299CD9003E0116 /* icons */; };
-		FA5A10B830299CD9003E0116 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10B130299CD9003E0116 /* manifest.json */; };
-		FA5A10B930299CD9003E0116 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A10B230299CD9003E0116 /* lib */; };
+		FAEB8325303612C600AB631A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB8324303612C600AB631A /* AppDelegate.swift */; };
+		FAEB8327303612C600AB631A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB8326303612C600AB631A /* SceneDelegate.swift */; };
+		FAEB832A303612C600AB631A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8328303612C600AB631A /* LaunchScreen.storyboard */; };
+		FAEB832D303612C600AB631A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEB832B303612C600AB631A /* Main.storyboard */; };
+		FAEB8336303612C600AB631A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB8335303612C600AB631A /* AppDelegate.swift */; };
+		FAEB8339303612C600AB631A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8337303612C600AB631A /* Main.storyboard */; };
+		FAEB8340303612C600AB631A /* Incognito Vault Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FAEB833F303612C600AB631A /* Incognito Vault Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FAEB834A303612C600AB631A /* Incognito Vault Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FAEB8349303612C600AB631A /* Incognito Vault Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FAEB834F303612C600AB631A /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8314303612C500AB631A /* Main.html */; };
+		FAEB8350303612C600AB631A /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8314303612C500AB631A /* Main.html */; };
+		FAEB8351303612C600AB631A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8316303612C500AB631A /* Icon.png */; };
+		FAEB8352303612C600AB631A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8316303612C500AB631A /* Icon.png */; };
+		FAEB8353303612C600AB631A /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8317303612C500AB631A /* Style.css */; };
+		FAEB8354303612C600AB631A /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8317303612C500AB631A /* Style.css */; };
+		FAEB8355303612C600AB631A /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8318303612C500AB631A /* Script.js */; };
+		FAEB8356303612C600AB631A /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8318303612C500AB631A /* Script.js */; };
+		FAEB8357303612C600AB631A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB8319303612C500AB631A /* ViewController.swift */; };
+		FAEB8358303612C600AB631A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB8319303612C500AB631A /* ViewController.swift */; };
+		FAEB8359303612C600AB631A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEB831A303612C600AB631A /* Assets.xcassets */; };
+		FAEB835A303612C600AB631A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEB831A303612C600AB631A /* Assets.xcassets */; };
+		FAEB835B303612C600AB631A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB831C303612C600AB631A /* SafariWebExtensionHandler.swift */; };
+		FAEB835C303612C600AB631A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB831C303612C600AB631A /* SafariWebExtensionHandler.swift */; };
+		FAEB8375303612C600AB631A /* background in Resources */ = {isa = PBXBuildFile; fileRef = FAEB836E303612C600AB631A /* background */; };
+		FAEB8376303612C600AB631A /* popup in Resources */ = {isa = PBXBuildFile; fileRef = FAEB836F303612C600AB631A /* popup */; };
+		FAEB8377303612C600AB631A /* platform in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8370303612C600AB631A /* platform */; };
+		FAEB8378303612C600AB631A /* content in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8371303612C600AB631A /* content */; };
+		FAEB8379303612C600AB631A /* icons in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8372303612C600AB631A /* icons */; };
+		FAEB837A303612C600AB631A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8373303612C600AB631A /* manifest.json */; };
+		FAEB837B303612C600AB631A /* lib in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8374303612C600AB631A /* lib */; };
+		FAEB837C303612C600AB631A /* background in Resources */ = {isa = PBXBuildFile; fileRef = FAEB836E303612C600AB631A /* background */; };
+		FAEB837D303612C600AB631A /* popup in Resources */ = {isa = PBXBuildFile; fileRef = FAEB836F303612C600AB631A /* popup */; };
+		FAEB837E303612C600AB631A /* platform in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8370303612C600AB631A /* platform */; };
+		FAEB837F303612C600AB631A /* content in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8371303612C600AB631A /* content */; };
+		FAEB8380303612C600AB631A /* icons in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8372303612C600AB631A /* icons */; };
+		FAEB8381303612C600AB631A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8373303612C600AB631A /* manifest.json */; };
+		FAEB8382303612C600AB631A /* lib in Resources */ = {isa = PBXBuildFile; fileRef = FAEB8374303612C600AB631A /* lib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FA5A109C30299CD9003E0116 /* PBXContainerItemProxy */ = {
+		FAEB8341303612C600AB631A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FA5A107730299CD8003E0116 /* Project object */;
+			containerPortal = FAEB830E303612C500AB631A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FA5A109930299CD9003E0116;
-			remoteInfo = "Incognito Vault Extension";
+			remoteGlobalIDString = FAEB833E303612C600AB631A;
+			remoteInfo = "Incognito Vault Extension (iOS)";
+		};
+		FAEB834B303612C600AB631A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAEB830E303612C500AB631A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAEB8348303612C600AB631A;
+			remoteInfo = "Incognito Vault Extension (macOS)";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FA5A10A730299CD9003E0116 /* Embed Foundation Extensions */ = {
+		FAEB8362303612C600AB631A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FA5A109B30299CD9003E0116 /* Incognito Vault Extension.appex in Embed Foundation Extensions */,
+				FAEB8340303612C600AB631A /* Incognito Vault Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB8369303612C600AB631A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FAEB834A303612C600AB631A /* Incognito Vault Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,37 +88,59 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FA5A107F30299CD8003E0116 /* Incognito Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Incognito Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA5A108230299CD8003E0116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA5A108630299CD8003E0116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
-		FA5A108830299CD8003E0116 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		FA5A108A30299CD8003E0116 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
-		FA5A108C30299CD8003E0116 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
-		FA5A108E30299CD8003E0116 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FA5A109130299CD8003E0116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FA5A109330299CD9003E0116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FA5A109530299CD9003E0116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA5A109A30299CD9003E0116 /* Incognito Vault Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Incognito Vault Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA5A109F30299CD9003E0116 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
-		FA5A10A130299CD9003E0116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA5A10AC30299CD9003E0116 /* background */ = {isa = PBXFileReference; lastKnownFileType = folder; name = background; path = Resources/background; sourceTree = "<group>"; };
-		FA5A10AD30299CD9003E0116 /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; name = popup; path = Resources/popup; sourceTree = "<group>"; };
-		FA5A10AE30299CD9003E0116 /* platform */ = {isa = PBXFileReference; lastKnownFileType = folder; name = platform; path = Resources/platform; sourceTree = "<group>"; };
-		FA5A10AF30299CD9003E0116 /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = Resources/content; sourceTree = "<group>"; };
-		FA5A10B030299CD9003E0116 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = Resources/icons; sourceTree = "<group>"; };
-		FA5A10B130299CD9003E0116 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = Resources/manifest.json; sourceTree = "<group>"; };
-		FA5A10B230299CD9003E0116 /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = Resources/lib; sourceTree = "<group>"; };
+		FAEB8315303612C500AB631A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		FAEB8316303612C500AB631A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		FAEB8317303612C500AB631A /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		FAEB8318303612C500AB631A /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		FAEB8319303612C500AB631A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAEB831A303612C600AB631A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAEB831C303612C600AB631A /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		FAEB8321303612C600AB631A /* Incognito Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Incognito Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEB8324303612C600AB631A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FAEB8326303612C600AB631A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FAEB8329303612C600AB631A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAEB832C303612C600AB631A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FAEB832E303612C600AB631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEB8333303612C600AB631A /* Incognito Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Incognito Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEB8335303612C600AB631A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FAEB8338303612C600AB631A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FAEB833A303612C600AB631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEB833F303612C600AB631A /* Incognito Vault Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Incognito Vault Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEB8344303612C600AB631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEB8349303612C600AB631A /* Incognito Vault Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Incognito Vault Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEB834E303612C600AB631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEB836E303612C600AB631A /* background */ = {isa = PBXFileReference; lastKnownFileType = folder; name = background; path = Resources/background; sourceTree = "<group>"; };
+		FAEB836F303612C600AB631A /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; name = popup; path = Resources/popup; sourceTree = "<group>"; };
+		FAEB8370303612C600AB631A /* platform */ = {isa = PBXFileReference; lastKnownFileType = folder; name = platform; path = Resources/platform; sourceTree = "<group>"; };
+		FAEB8371303612C600AB631A /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = Resources/content; sourceTree = "<group>"; };
+		FAEB8372303612C600AB631A /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = Resources/icons; sourceTree = "<group>"; };
+		FAEB8373303612C600AB631A /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = Resources/manifest.json; sourceTree = "<group>"; };
+		FAEB8374303612C600AB631A /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = Resources/lib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FA5A107C30299CD8003E0116 /* Frameworks */ = {
+		FAEB831E303612C600AB631A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA5A109730299CD9003E0116 /* Frameworks */ = {
+		FAEB8330303612C600AB631A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB833C303612C600AB631A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB8346303612C600AB631A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -91,225 +150,380 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA5A107630299CD8003E0116 = {
+		FAEB830D303612C500AB631A = {
 			isa = PBXGroup;
 			children = (
-				FA5A108130299CD8003E0116 /* Incognito Vault */,
-				FA5A109E30299CD9003E0116 /* Incognito Vault Extension */,
-				FA5A108030299CD8003E0116 /* Products */,
+				FAEB8312303612C500AB631A /* Shared (App) */,
+				FAEB831B303612C600AB631A /* Shared (Extension) */,
+				FAEB8323303612C600AB631A /* iOS (App) */,
+				FAEB8334303612C600AB631A /* macOS (App) */,
+				FAEB8343303612C600AB631A /* iOS (Extension) */,
+				FAEB834D303612C600AB631A /* macOS (Extension) */,
+				FAEB8322303612C600AB631A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FA5A108030299CD8003E0116 /* Products */ = {
+		FAEB8312303612C500AB631A /* Shared (App) */ = {
 			isa = PBXGroup;
 			children = (
-				FA5A107F30299CD8003E0116 /* Incognito Vault.app */,
-				FA5A109A30299CD9003E0116 /* Incognito Vault Extension.appex */,
+				FAEB8319303612C500AB631A /* ViewController.swift */,
+				FAEB831A303612C600AB631A /* Assets.xcassets */,
+				FAEB8313303612C500AB631A /* Resources */,
 			);
-			name = Products;
+			path = "Shared (App)";
 			sourceTree = "<group>";
 		};
-		FA5A108130299CD8003E0116 /* Incognito Vault */ = {
+		FAEB8313303612C500AB631A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FA5A108230299CD8003E0116 /* AppDelegate.swift */,
-				FA5A108E30299CD8003E0116 /* ViewController.swift */,
-				FA5A109030299CD8003E0116 /* Main.storyboard */,
-				FA5A109330299CD9003E0116 /* Assets.xcassets */,
-				FA5A109530299CD9003E0116 /* Info.plist */,
-				FA5A108430299CD8003E0116 /* Resources */,
-			);
-			path = "Incognito Vault";
-			sourceTree = "<group>";
-		};
-		FA5A108430299CD8003E0116 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FA5A108530299CD8003E0116 /* Main.html */,
-				FA5A108830299CD8003E0116 /* Icon.png */,
-				FA5A108A30299CD8003E0116 /* Style.css */,
-				FA5A108C30299CD8003E0116 /* Script.js */,
+				FAEB8314303612C500AB631A /* Main.html */,
+				FAEB8316303612C500AB631A /* Icon.png */,
+				FAEB8317303612C500AB631A /* Style.css */,
+				FAEB8318303612C500AB631A /* Script.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FA5A109E30299CD9003E0116 /* Incognito Vault Extension */ = {
+		FAEB831B303612C600AB631A /* Shared (Extension) */ = {
 			isa = PBXGroup;
 			children = (
-				FA5A10AB30299CD9003E0116 /* Resources */,
-				FA5A109F30299CD9003E0116 /* SafariWebExtensionHandler.swift */,
-				FA5A10A130299CD9003E0116 /* Info.plist */,
+				FAEB836D303612C600AB631A /* Resources */,
+				FAEB831C303612C600AB631A /* SafariWebExtensionHandler.swift */,
 			);
-			path = "Incognito Vault Extension";
+			path = "Shared (Extension)";
 			sourceTree = "<group>";
 		};
-		FA5A10AB30299CD9003E0116 /* Resources */ = {
+		FAEB8322303612C600AB631A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA5A10AC30299CD9003E0116 /* background */,
-				FA5A10AD30299CD9003E0116 /* popup */,
-				FA5A10AE30299CD9003E0116 /* platform */,
-				FA5A10AF30299CD9003E0116 /* content */,
-				FA5A10B030299CD9003E0116 /* icons */,
-				FA5A10B130299CD9003E0116 /* manifest.json */,
-				FA5A10B230299CD9003E0116 /* lib */,
+				FAEB8321303612C600AB631A /* Incognito Vault.app */,
+				FAEB8333303612C600AB631A /* Incognito Vault.app */,
+				FAEB833F303612C600AB631A /* Incognito Vault Extension.appex */,
+				FAEB8349303612C600AB631A /* Incognito Vault Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAEB8323303612C600AB631A /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB8324303612C600AB631A /* AppDelegate.swift */,
+				FAEB8326303612C600AB631A /* SceneDelegate.swift */,
+				FAEB8328303612C600AB631A /* LaunchScreen.storyboard */,
+				FAEB832B303612C600AB631A /* Main.storyboard */,
+				FAEB832E303612C600AB631A /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		FAEB8334303612C600AB631A /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB8335303612C600AB631A /* AppDelegate.swift */,
+				FAEB8337303612C600AB631A /* Main.storyboard */,
+				FAEB833A303612C600AB631A /* Info.plist */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		FAEB8343303612C600AB631A /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB8344303612C600AB631A /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		FAEB834D303612C600AB631A /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB834E303612C600AB631A /* Info.plist */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		FAEB836D303612C600AB631A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB836E303612C600AB631A /* background */,
+				FAEB836F303612C600AB631A /* popup */,
+				FAEB8370303612C600AB631A /* platform */,
+				FAEB8371303612C600AB631A /* content */,
+				FAEB8372303612C600AB631A /* icons */,
+				FAEB8373303612C600AB631A /* manifest.json */,
+				FAEB8374303612C600AB631A /* lib */,
 			);
 			name = Resources;
-			path = "Incognito Vault Extension";
+			path = "Shared (Extension)";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA5A107E30299CD8003E0116 /* Incognito Vault */ = {
+		FAEB8320303612C600AB631A /* Incognito Vault (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA5A10A830299CD9003E0116 /* Build configuration list for PBXNativeTarget "Incognito Vault" */;
+			buildConfigurationList = FAEB8363303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault (iOS)" */;
 			buildPhases = (
-				FA5A107B30299CD8003E0116 /* Sources */,
-				FA5A107C30299CD8003E0116 /* Frameworks */,
-				FA5A107D30299CD8003E0116 /* Resources */,
-				FA5A10A730299CD9003E0116 /* Embed Foundation Extensions */,
+				FAEB831D303612C600AB631A /* Sources */,
+				FAEB831E303612C600AB631A /* Frameworks */,
+				FAEB831F303612C600AB631A /* Resources */,
+				FAEB8362303612C600AB631A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FA5A109D30299CD9003E0116 /* PBXTargetDependency */,
+				FAEB8342303612C600AB631A /* PBXTargetDependency */,
 			);
-			name = "Incognito Vault";
+			name = "Incognito Vault (iOS)";
 			packageProductDependencies = (
 			);
-			productName = "Incognito Vault";
-			productReference = FA5A107F30299CD8003E0116 /* Incognito Vault.app */;
+			productName = "Incognito Vault (iOS)";
+			productReference = FAEB8321303612C600AB631A /* Incognito Vault.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA5A109930299CD9003E0116 /* Incognito Vault Extension */ = {
+		FAEB8332303612C600AB631A /* Incognito Vault (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA5A10A430299CD9003E0116 /* Build configuration list for PBXNativeTarget "Incognito Vault Extension" */;
+			buildConfigurationList = FAEB836A303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault (macOS)" */;
 			buildPhases = (
-				FA5A109630299CD9003E0116 /* Sources */,
-				FA5A109730299CD9003E0116 /* Frameworks */,
-				FA5A109830299CD9003E0116 /* Resources */,
+				FAEB832F303612C600AB631A /* Sources */,
+				FAEB8330303612C600AB631A /* Frameworks */,
+				FAEB8331303612C600AB631A /* Resources */,
+				FAEB8369303612C600AB631A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAEB834C303612C600AB631A /* PBXTargetDependency */,
+			);
+			name = "Incognito Vault (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Incognito Vault (macOS)";
+			productReference = FAEB8333303612C600AB631A /* Incognito Vault.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FAEB833E303612C600AB631A /* Incognito Vault Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAEB835F303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault Extension (iOS)" */;
+			buildPhases = (
+				FAEB833B303612C600AB631A /* Sources */,
+				FAEB833C303612C600AB631A /* Frameworks */,
+				FAEB833D303612C600AB631A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Incognito Vault Extension";
+			name = "Incognito Vault Extension (iOS)";
 			packageProductDependencies = (
 			);
-			productName = "Incognito Vault Extension";
-			productReference = FA5A109A30299CD9003E0116 /* Incognito Vault Extension.appex */;
+			productName = "Incognito Vault Extension (iOS)";
+			productReference = FAEB833F303612C600AB631A /* Incognito Vault Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		FAEB8348303612C600AB631A /* Incognito Vault Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAEB8366303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault Extension (macOS)" */;
+			buildPhases = (
+				FAEB8345303612C600AB631A /* Sources */,
+				FAEB8346303612C600AB631A /* Frameworks */,
+				FAEB8347303612C600AB631A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Incognito Vault Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Incognito Vault Extension (macOS)";
+			productReference = FAEB8349303612C600AB631A /* Incognito Vault Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FA5A107730299CD8003E0116 /* Project object */ = {
+		FAEB830E303612C500AB631A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
-					FA5A107E30299CD8003E0116 = {
+					FAEB8320303612C600AB631A = {
 						CreatedOnToolsVersion = 26.4;
 					};
-					FA5A109930299CD9003E0116 = {
+					FAEB8332303612C600AB631A = {
+						CreatedOnToolsVersion = 26.4;
+					};
+					FAEB833E303612C600AB631A = {
+						CreatedOnToolsVersion = 26.4;
+					};
+					FAEB8348303612C600AB631A = {
 						CreatedOnToolsVersion = 26.4;
 					};
 				};
 			};
-			buildConfigurationList = FA5A107A30299CD8003E0116 /* Build configuration list for PBXProject "Incognito Vault" */;
+			buildConfigurationList = FAEB8311303612C500AB631A /* Build configuration list for PBXProject "Incognito Vault" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = FA5A107630299CD8003E0116;
+			mainGroup = FAEB830D303612C500AB631A;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = FA5A108030299CD8003E0116 /* Products */;
+			productRefGroup = FAEB8322303612C600AB631A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA5A107E30299CD8003E0116 /* Incognito Vault */,
-				FA5A109930299CD9003E0116 /* Incognito Vault Extension */,
+				FAEB8320303612C600AB631A /* Incognito Vault (iOS) */,
+				FAEB8332303612C600AB631A /* Incognito Vault (macOS) */,
+				FAEB833E303612C600AB631A /* Incognito Vault Extension (iOS) */,
+				FAEB8348303612C600AB631A /* Incognito Vault Extension (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FA5A107D30299CD8003E0116 /* Resources */ = {
+		FAEB831F303612C600AB631A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5A108930299CD8003E0116 /* Icon.png in Resources */,
-				FA5A109230299CD8003E0116 /* Main.storyboard in Resources */,
-				FA5A108D30299CD8003E0116 /* Script.js in Resources */,
-				FA5A108730299CD8003E0116 /* Main.html in Resources */,
-				FA5A109430299CD9003E0116 /* Assets.xcassets in Resources */,
-				FA5A108B30299CD8003E0116 /* Style.css in Resources */,
+				FAEB8351303612C600AB631A /* Icon.png in Resources */,
+				FAEB832A303612C600AB631A /* LaunchScreen.storyboard in Resources */,
+				FAEB834F303612C600AB631A /* Main.html in Resources */,
+				FAEB8355303612C600AB631A /* Script.js in Resources */,
+				FAEB8359303612C600AB631A /* Assets.xcassets in Resources */,
+				FAEB832D303612C600AB631A /* Main.storyboard in Resources */,
+				FAEB8353303612C600AB631A /* Style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA5A109830299CD9003E0116 /* Resources */ = {
+		FAEB8331303612C600AB631A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5A10B530299CD9003E0116 /* platform in Resources */,
-				FA5A10B330299CD9003E0116 /* background in Resources */,
-				FA5A10B630299CD9003E0116 /* content in Resources */,
-				FA5A10B730299CD9003E0116 /* icons in Resources */,
-				FA5A10B930299CD9003E0116 /* lib in Resources */,
-				FA5A10B830299CD9003E0116 /* manifest.json in Resources */,
-				FA5A10B430299CD9003E0116 /* popup in Resources */,
+				FAEB8352303612C600AB631A /* Icon.png in Resources */,
+				FAEB8354303612C600AB631A /* Style.css in Resources */,
+				FAEB8339303612C600AB631A /* Main.storyboard in Resources */,
+				FAEB8356303612C600AB631A /* Script.js in Resources */,
+				FAEB835A303612C600AB631A /* Assets.xcassets in Resources */,
+				FAEB8350303612C600AB631A /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB833D303612C600AB631A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEB837E303612C600AB631A /* platform in Resources */,
+				FAEB837C303612C600AB631A /* background in Resources */,
+				FAEB837F303612C600AB631A /* content in Resources */,
+				FAEB8380303612C600AB631A /* icons in Resources */,
+				FAEB8382303612C600AB631A /* lib in Resources */,
+				FAEB8381303612C600AB631A /* manifest.json in Resources */,
+				FAEB837D303612C600AB631A /* popup in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB8347303612C600AB631A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEB8377303612C600AB631A /* platform in Resources */,
+				FAEB8375303612C600AB631A /* background in Resources */,
+				FAEB8378303612C600AB631A /* content in Resources */,
+				FAEB8379303612C600AB631A /* icons in Resources */,
+				FAEB837B303612C600AB631A /* lib in Resources */,
+				FAEB837A303612C600AB631A /* manifest.json in Resources */,
+				FAEB8376303612C600AB631A /* popup in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FA5A107B30299CD8003E0116 /* Sources */ = {
+		FAEB831D303612C600AB631A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5A108F30299CD8003E0116 /* ViewController.swift in Sources */,
-				FA5A108330299CD8003E0116 /* AppDelegate.swift in Sources */,
+				FAEB8357303612C600AB631A /* ViewController.swift in Sources */,
+				FAEB8325303612C600AB631A /* AppDelegate.swift in Sources */,
+				FAEB8327303612C600AB631A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA5A109630299CD9003E0116 /* Sources */ = {
+		FAEB832F303612C600AB631A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5A10A030299CD9003E0116 /* SafariWebExtensionHandler.swift in Sources */,
+				FAEB8358303612C600AB631A /* ViewController.swift in Sources */,
+				FAEB8336303612C600AB631A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB833B303612C600AB631A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEB835B303612C600AB631A /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEB8345303612C600AB631A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEB835C303612C600AB631A /* SafariWebExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA5A109D30299CD9003E0116 /* PBXTargetDependency */ = {
+		FAEB8342303612C600AB631A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA5A109930299CD9003E0116 /* Incognito Vault Extension */;
-			targetProxy = FA5A109C30299CD9003E0116 /* PBXContainerItemProxy */;
+			target = FAEB833E303612C600AB631A /* Incognito Vault Extension (iOS) */;
+			targetProxy = FAEB8341303612C600AB631A /* PBXContainerItemProxy */;
+		};
+		FAEB834C303612C600AB631A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAEB8348303612C600AB631A /* Incognito Vault Extension (macOS) */;
+			targetProxy = FAEB834B303612C600AB631A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FA5A108530299CD8003E0116 /* Main.html */ = {
+		FAEB8314303612C500AB631A /* Main.html */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FA5A108630299CD8003E0116 /* Base */,
+				FAEB8315303612C500AB631A /* Base */,
 			);
 			name = Main.html;
 			sourceTree = "<group>";
 		};
-		FA5A109030299CD8003E0116 /* Main.storyboard */ = {
+		FAEB8328303612C600AB631A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FA5A109130299CD8003E0116 /* Base */,
+				FAEB8329303612C600AB631A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FAEB832B303612C600AB631A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEB832C303612C600AB631A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FAEB8337303612C600AB631A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEB8338303612C600AB631A /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -317,7 +531,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FA5A10A230299CD9003E0116 /* Debug */ = {
+		FAEB835D303612C600AB631A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -370,17 +584,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		FA5A10A330299CD9003E0116 /* Release */ = {
+		FAEB835E303612C600AB631A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -427,15 +639,165 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
-		FA5A10A530299CD9003E0116 /* Debug */ = {
+		FAEB8360303612C600AB631A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KARCDA53C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
+				PRODUCT_NAME = "Incognito Vault Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FAEB8361303612C600AB631A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KARCDA53C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
+				PRODUCT_NAME = "Incognito Vault Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAEB8364303612C600AB631A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KARCDA53C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
+				PRODUCT_NAME = "Incognito Vault";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FAEB8365303612C600AB631A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KARCDA53C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
+				PRODUCT_NAME = "Incognito Vault";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAEB8367303612C600AB631A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -445,7 +807,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Incognito Vault Extension/Info.plist";
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -460,7 +822,8 @@
 					SafariServices,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Incognito Vault Extension";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -470,7 +833,7 @@
 			};
 			name = Debug;
 		};
-		FA5A10A630299CD9003E0116 /* Release */ = {
+		FAEB8368303612C600AB631A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -480,7 +843,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Incognito Vault Extension/Info.plist";
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -495,7 +858,8 @@
 					SafariServices,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Incognito Vault Extension";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -505,13 +869,12 @@
 			};
 			name = Release;
 		};
-		FA5A10A930299CD9003E0116 /* Debug */ = {
+		FAEB836B303612C600AB631A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5KARCDA53C;
 				ENABLE_APP_SANDBOX = YES;
@@ -519,15 +882,15 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Incognito Vault/Info.plist";
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -536,27 +899,24 @@
 					WebKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Incognito Vault";
 				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		FA5A10AA30299CD9003E0116 /* Release */ = {
+		FAEB836C303612C600AB631A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5KARCDA53C;
 				ENABLE_APP_SANDBOX = YES;
@@ -564,15 +924,15 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Incognito Vault/Info.plist";
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Incognito Vault";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -581,51 +941,67 @@
 					WebKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Incognito Vault";
 				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA5A107A30299CD8003E0116 /* Build configuration list for PBXProject "Incognito Vault" */ = {
+		FAEB8311303612C500AB631A /* Build configuration list for PBXProject "Incognito Vault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA5A10A230299CD9003E0116 /* Debug */,
-				FA5A10A330299CD9003E0116 /* Release */,
+				FAEB835D303612C600AB631A /* Debug */,
+				FAEB835E303612C600AB631A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA5A10A430299CD9003E0116 /* Build configuration list for PBXNativeTarget "Incognito Vault Extension" */ = {
+		FAEB835F303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault Extension (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA5A10A530299CD9003E0116 /* Debug */,
-				FA5A10A630299CD9003E0116 /* Release */,
+				FAEB8360303612C600AB631A /* Debug */,
+				FAEB8361303612C600AB631A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA5A10A830299CD9003E0116 /* Build configuration list for PBXNativeTarget "Incognito Vault" */ = {
+		FAEB8363303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA5A10A930299CD9003E0116 /* Debug */,
-				FA5A10AA30299CD9003E0116 /* Release */,
+				FAEB8364303612C600AB631A /* Debug */,
+				FAEB8365303612C600AB631A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAEB8366303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAEB8367303612C600AB631A /* Debug */,
+				FAEB8368303612C600AB631A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAEB836A303612C600AB631A /* Build configuration list for PBXNativeTarget "Incognito Vault (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAEB836B303612C600AB631A /* Debug */,
+				FAEB836C303612C600AB631A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FA5A107730299CD8003E0116 /* Project object */;
+	rootObject = FAEB830E303612C500AB631A /* Project object */;
 }

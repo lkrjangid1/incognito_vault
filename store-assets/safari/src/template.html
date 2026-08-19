@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Incognito Vault — App Store screenshot template</title>
+<style>
+  /* Palette lifted from shared/popup/popup.css so the mock IS the product's look. */
+  :root {
+    --ink: #101216;
+    --panel: #191c22;
+    --line: #262b33;
+    --text: #e8e6df;
+    --muted: #8a8f98;
+    --accent: #7ee0b8;
+    --danger: #ff9d9d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { width: 100vw; height: 100vh; overflow: hidden; }
+
+  body {
+    background:
+      radial-gradient(120vmin 90vmin at 85% -10%, rgba(126, 224, 184, 0.14), transparent 60%),
+      radial-gradient(140vmin 100vmin at -10% 110%, rgba(126, 224, 184, 0.07), transparent 55%),
+      linear-gradient(165deg, #14171c 0%, var(--ink) 55%, #0b0d10 100%);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7vmin 6vmin;
+    gap: 4vmin;
+  }
+
+
+  /* ---------- caption block ---------- */
+  .caption { text-align: center; max-width: 88vmin; flex: none; }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.6vmin;
+    font-size: 2.2vmin;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2.8vmin;
+  }
+
+  .orb {
+    width: 3.4vmin;
+    height: 3.4vmin;
+    border-radius: 50% 50% 45% 45%;
+    background:
+      radial-gradient(circle at 32% 30%, var(--ink) 0.36vmin, transparent 0.46vmin),
+      radial-gradient(circle at 66% 30%, var(--ink) 0.36vmin, transparent 0.46vmin),
+      linear-gradient(180deg, var(--accent) 55%, transparent 100%);
+    flex: none;
+  }
+
+  h1 {
+    font-size: 6.4vmin;
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+
+  .sub {
+    margin-top: 2.4vmin;
+    font-size: 2.7vmin;
+    line-height: 1.45;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ---------- visual area ---------- */
+  .visual {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 2.2vmin;
+    box-shadow: 0 2vmin 8vmin rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  /* ---------- popup mock (shots 1 & 5) ---------- */
+  .popup { width: 64vmin; background: var(--ink); }
+
+  .p-head { display: flex; align-items: center; gap: 2vmin; padding: 3vmin 3vmin 2vmin; }
+  .p-head .orb { width: 5vmin; height: 5vmin; }
+  .p-head h2 { font-size: 2.6vmin; font-weight: 700; letter-spacing: 0.02em; }
+  .p-head .tag { color: var(--muted); font-size: 1.95vmin; }
+
+  .p-save {
+    margin: 0 3vmin 1.8vmin;
+    padding: 1.7vmin 2vmin;
+    border: 1px solid var(--accent);
+    border-radius: 1.4vmin;
+    color: var(--accent);
+    font-size: 2.25vmin;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .p-search {
+    margin: 0 3vmin 1.8vmin;
+    padding: 1.5vmin 2.1vmin;
+    border: 1px solid var(--line);
+    border-radius: 1.4vmin;
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 2.2vmin;
+  }
+
+  .rows { padding: 0 1.8vmin 2.4vmin; }
+  .row { padding: 1.9vmin 1.5vmin; border-radius: 1.4vmin; }
+  .row + .row { border-top: 1px solid var(--line); }
+  .row.hi { background: var(--panel); }
+
+  .row-top { display: flex; align-items: center; justify-content: space-between; gap: 1.4vmin; }
+  .row .title {
+    font-weight: 600;
+    font-size: 2.25vmin;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .row .meta {
+    margin-top: 0.7vmin;
+    color: var(--muted);
+    font: 1.85vmin ui-monospace, SFMono-Regular, Menlo, monospace;
+    white-space: nowrap;
+  }
+  .row .meta b { color: var(--accent); font-weight: 400; }
+
+  .btns { display: flex; gap: 0.8vmin; flex: none; }
+  .btns span {
+    border: 1px solid var(--line);
+    border-radius: 1vmin;
+    font-size: 1.85vmin;
+    padding: 0.7vmin 1.4vmin;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .btns .resume { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .btns .del { color: var(--muted); }
+
+  /* ---------- chat page mock (shot 2) ---------- */
+  .page { width: 78vmin; position: relative; background: #17181c; }
+  .p-bar {
+    display: flex; align-items: center; gap: 1.2vmin;
+    padding: 1.8vmin 2.4vmin;
+    background: #101114; border-bottom: 1px solid var(--line);
+  }
+  .dot { width: 1.5vmin; height: 1.5vmin; border-radius: 50%; background: #3a3f47; }
+  .p-url {
+    margin-left: 1.6vmin;
+    font: 1.9vmin ui-monospace, Menlo, monospace;
+    color: var(--muted);
+    background: #191b1f;
+    border-radius: 1vmin;
+    padding: 0.8vmin 2vmin;
+  }
+  .p-url b { color: var(--text); font-weight: 500; }
+  .badge {
+    margin-left: auto;
+    font-size: 1.7vmin; font-weight: 700; letter-spacing: 0.08em;
+    color: #b9a6e8; border: 1px solid #4c4370;
+    border-radius: 2vmin; padding: 0.5vmin 1.6vmin;
+  }
+
+  .chat { padding: 3vmin 3.4vmin 11vmin; display: flex; flex-direction: column; gap: 2.2vmin; }
+  .msg { max-width: 82%; border-radius: 1.8vmin; padding: 2vmin 2.4vmin; font-size: 2.1vmin; line-height: 1.5; }
+  .msg.user { align-self: flex-end; background: #23262d; }
+  .msg.ai { align-self: flex-start; background: #1c1f25; border: 1px solid var(--line); color: #cfccc3; }
+  .msg .code {
+    margin-top: 1.4vmin;
+    background: #0d0f12; border: 1px solid var(--line); border-radius: 1.2vmin;
+    padding: 1.6vmin 2vmin;
+    font: 1.8vmin ui-monospace, Menlo, monospace;
+    color: #9fd8bd;
+    white-space: pre;
+  }
+
+  .fab {
+    position: absolute; right: 3vmin; bottom: 3vmin;
+    display: inline-flex; align-items: center; gap: 1.2vmin;
+    background: var(--accent); color: #0c2a1e;
+    font-size: 2.3vmin; font-weight: 700;
+    border-radius: 999px; padding: 1.7vmin 3vmin;
+    box-shadow: 0 1.4vmin 4vmin rgba(126, 224, 184, 0.35);
+  }
+  .fab .orb { width: 2.8vmin; height: 2.8vmin; }
+
+  .toast {
+    position: absolute; right: 3vmin; bottom: 10.5vmin;
+    background: #0e1114; border: 1px solid var(--accent);
+    color: var(--text); font-size: 2vmin;
+    border-radius: 1.4vmin; padding: 1.6vmin 2.2vmin;
+    box-shadow: 0 1vmin 4vmin rgba(0, 0, 0, 0.6);
+  }
+  .toast b { color: var(--accent); }
+
+  /* ---------- file tree (shot 3) ---------- */
+  .files {
+    width: 74vmin;
+    padding: 3.4vmin 3.8vmin 4vmin;
+    font: 2.15vmin/1.9 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #cfccc3;
+    white-space: pre;
+  }
+  .files .dim { color: var(--muted); }
+  .files .zip { color: var(--accent); font-weight: 700; }
+  .files .md { color: var(--text); }
+
+  .mdprev {
+    width: 74vmin;
+    border-top: 1px solid var(--line);
+    padding: 2.6vmin 3.8vmin 3.4vmin;
+    font: 1.95vmin/1.75 ui-monospace, Menlo, monospace;
+    color: var(--muted);
+    white-space: pre;
+  }
+  .mdprev b { color: var(--accent); font-weight: 400; }
+  .mdprev i { color: var(--text); font-style: normal; }
+
+  /* ---------- privacy list (shot 4) ---------- */
+  .priv { width: 70vmin; padding: 3.6vmin 4vmin 4.4vmin; display: flex; flex-direction: column; gap: 2.6vmin; }
+  .p-item { display: flex; align-items: flex-start; gap: 2.2vmin; }
+  .tick {
+    flex: none;
+    width: 3.6vmin; height: 3.6vmin; border-radius: 50%;
+    border: 1px solid var(--accent); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.1vmin; font-weight: 800;
+    margin-top: 0.3vmin;
+  }
+  .p-item h3 { font-size: 2.5vmin; font-weight: 700; }
+  .p-item p { margin-top: 0.5vmin; font-size: 2vmin; color: var(--muted); line-height: 1.45; }
+
+  /* ---------- resume flow (shot 5) ---------- */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; }
+  .mini-popup { width: 64vmin; background: var(--ink); border: 1px solid var(--line); border-radius: 2vmin; overflow: hidden; box-shadow: 0 2vmin 7vmin rgba(0,0,0,0.5); }
+  .mini-popup .rows { padding: 1.4vmin 1.8vmin; }
+  .arrow { font-size: 4.6vmin; color: var(--accent); line-height: 1.35; }
+  .compose { width: 72vmin; }
+  .compose .p-bar .p-url { font-size: 1.85vmin; }
+  .composer {
+    margin: 2.6vmin 3vmin 3vmin;
+    border: 1px solid var(--line);
+    border-radius: 1.8vmin;
+    background: #101114;
+    padding: 2.2vmin 2.6vmin;
+    font-size: 2.05vmin; line-height: 1.5; color: #cfccc3;
+  }
+  .composer .cur { color: var(--accent); animation: none; }
+  .compose .note {
+    margin: 0 3vmin 3vmin;
+    font-size: 1.9vmin; color: var(--muted);
+  }
+  .compose .note b { color: var(--text); font-weight: 600; }
+
+  /* ---------- landscape (Mac / rotated) : caption left, visual right ---------- */
+  @media (orientation: landscape) {
+    body {
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      padding: 0;
+      gap: 0;
+    }
+    .caption {
+      flex: 0 0 44%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      padding: 0 5vmin 0 8vmin;
+      max-width: none;
+    }
+    h1 { font-size: 7.4vmin; }
+    .sub { font-size: 3vmin; max-width: 60vmin; }
+    .visual { flex: 1 1 auto; align-items: center; padding: 6vmin 6vmin 6vmin 0; }
+    .popup, .mini-popup { width: 70vmin; }
+    .page { width: 86vmin; }
+    .files, .mdprev { width: 84vmin; }
+    .priv { width: 78vmin; }
+    .compose { width: 78vmin; }
+    .flow { gap: 0; }
+  }
+
+  /* Tall phone canvases: bigger type, so the caption holds its own. */
+  @media (max-aspect-ratio: 3/5) {
+    body { padding-top: 10vmin; }
+    h1 { font-size: 8vmin; }
+    .sub { font-size: 3.2vmin; margin-top: 3vmin; }
+    .kicker { font-size: 2.6vmin; margin-bottom: 3.4vmin; }
+  }
+</style>
+</head>
+<body>
+
+<section class="caption">
+  <div class="kicker"><span class="orb"></span> Incognito Vault</div>
+  <h1 id="headline"></h1>
+  <p class="sub" id="subline"></p>
+</section>
+
+<section class="visual" id="visual"></section>
+
+<script>
+  const rowsHtml = (highlightResume) => `
+    <div class="rows">
+      <div class="row">
+        <div class="row-top"><span class="title">How do I fix a CORS error</span>
+          <span class="btns"><span>.md</span><span class="resume">Resume</span><span class="del">✕</span></span></div>
+        <div class="meta"><b>claude</b> · Aug 12, 09:14 · 18 msgs · 2 artifacts</div>
+      </div>
+      <div class="row${highlightResume ? " hi" : ""}">
+        <div class="row-top"><span class="title">Flutter architecture layers</span>
+          <span class="btns"><span>.md</span><span class="resume">Resume</span><span class="del">✕</span></span></div>
+        <div class="meta"><b>claude</b> · Aug 6, 12:43 · 6 msgs · 2 artifacts</div>
+      </div>
+      <div class="row">
+        <div class="row-top"><span class="title">Salary negotiation script</span>
+          <span class="btns"><span>.md</span><span class="resume">Resume</span><span class="del">✕</span></span></div>
+        <div class="meta"><b>chatgpt</b> · Aug 3, 21:07 · 11 msgs</div>
+      </div>
+      <div class="row">
+        <div class="row-top"><span class="title">Draft resignation letter</span>
+          <span class="btns"><span>.md</span><span class="resume">Resume</span><span class="del">✕</span></span></div>
+        <div class="meta"><b>chatgpt</b> · Jul 28, 08:52 · 9 msgs</div>
+      </div>
+      <div class="row">
+        <div class="row-top"><span class="title">SQL window functions explained</span>
+          <span class="btns"><span>.md</span><span class="resume">Resume</span><span class="del">✕</span></span></div>
+        <div class="meta"><b>claude</b> · Jul 19, 17:30 · 14 msgs · 1 artifact</div>
+      </div>
+    </div>`;
+
+  const SHOTS = {
+    1: {
+      headline: 'Incognito chats vanish.<br><em>Yours don’t have to.</em>',
+      subline: 'A private, searchable vault for Claude and ChatGPT temporary chats — kept on your device, nowhere else.',
+      visual: `
+        <div class="card popup">
+          <div class="p-head"><span class="orb"></span>
+            <div><h2>Incognito Vault</h2><div class="tag">Chats the ghost forgot — you didn’t.</div></div>
+          </div>
+          <div class="p-save">＋ Save current chat</div>
+          <div class="p-search">Search saved chats…</div>
+          ${rowsHtml(false)}
+        </div>`
+    },
+    2: {
+      headline: 'One click, <em>before</em> you close the tab.',
+      subline: 'Save to Vault reads the conversation you’re looking at — title, code blocks, artifacts and all.',
+      visual: `
+        <div class="card page">
+          <div class="p-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="p-url">🔒 <b>claude.ai</b>/chat</span>
+            <span class="badge">INCOGNITO</span>
+          </div>
+          <div class="chat">
+            <div class="msg user">Why is my fetch blocked by CORS in Safari but not in the app?</div>
+            <div class="msg ai">Safari enforces preflight caching differently. The server must answer the OPTIONS request with the exact origin — a wildcard won’t pass with credentials:
+              <div class="code">Access-Control-Allow-Origin: https://app.example.com
+Access-Control-Allow-Credentials: true</div>
+            </div>
+            <div class="msg user">Show me the nginx config for that.</div>
+          </div>
+          <div class="toast"><b>Saved to vault</b> — ZIP in Downloads (12 msgs, 2 artifacts)</div>
+          <div class="fab"><span class="orb"></span> Save to Vault</div>
+        </div>`
+    },
+    3: {
+      headline: 'One ZIP per chat.<br><em>Plain Markdown</em> inside.',
+      subline: 'Real documents with front-matter and fenced code — files you can still open in twenty years.',
+      visual: `
+        <div class="card">
+          <div class="files"><span class="dim">Downloads/</span>
+└── <span class="zip">IncognitoVault_2026-08-06_1243_flutter-architecture-layers.zip</span>
+    <span class="dim">└──</span> 2026-08-06_1243_flutter-architecture-layers/
+        ├── <span class="md">flutter-architecture-layers.md</span>
+        ├── <span class="md">artifact-1-layer-diagram.md</span>
+        └── <span class="md">artifact-2-widget-tree.md</span></div>
+          <div class="mdprev"><b>---</b>
+<i>title:</i> Flutter architecture layers
+<i>platform:</i> claude   <i>messages:</i> 6   <i>artifacts:</i> 2
+<i>captured:</i> 2026-08-06T12:43:09
+<b>---</b>
+
+<b>## You</b>
+How should I split state, domain and UI layers…</div>
+        </div>`
+    },
+    4: {
+      headline: 'No servers. No accounts.<br><em>No analytics.</em>',
+      subline: 'Zero network requests — there is no code that opens a connection, because there is nowhere to connect to.',
+      visual: `
+        <div class="card priv">
+          <div class="p-item"><span class="tick">✓</span>
+            <div><h3>Everything stays on your device</h3><p>Chats are saved to your Downloads folder and a local history inside Safari. Nothing is uploaded, ever.</p></div>
+          </div>
+          <div class="p-item"><span class="tick">✓</span>
+            <div><h3>Reads the page only when you click Save</h3><p>Access is limited to claude.ai and chatgpt.com — and per-site permission stays in your control in Safari.</p></div>
+          </div>
+          <div class="p-item"><span class="tick">✓</span>
+            <div><h3>Open source, end to end</h3><p>About 1,500 lines of readable JavaScript. No build step, no minification, no bundled dependencies.</p></div>
+          </div>
+        </div>`
+    },
+    5: {
+      headline: 'Pick it back up <em>where you left off.</em>',
+      subline: 'Resume opens a fresh temporary session with your transcript ready in the composer. You press Enter — never the extension.',
+      visual: `
+        <div class="flow">
+          <div class="mini-popup">
+            ${rowsHtml(true)}
+          </div>
+          <div class="arrow">↓</div>
+          <div class="card compose">
+            <div class="p-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="p-url">🔒 <b>chatgpt.com</b>/?temporary-chat=true</span>
+              <span class="badge">TEMPORARY</span>
+            </div>
+            <div class="composer">Context from a previous conversation, resumed with Incognito Vault:<br><br># Flutter architecture layers<br>## You: How should I split state, domain and UI layers…<span class="cur">▍</span></div>
+            <div class="note"><b>Nothing is sent automatically.</b> Read it, trim it, and press Enter yourself.</div>
+          </div>
+        </div>`
+    }
+  };
+
+  const q = new URLSearchParams(location.search);
+  const shotNo = q.get('shot') || '1';
+  const shot = SHOTS[shotNo];
+  document.getElementById('headline').innerHTML = shot.headline;
+  document.getElementById('subline').innerHTML = shot.subline;
+  const v = document.getElementById('visual');
+  v.innerHTML = '<div class="fit">' + shot.visual + '</div>';
+
+  // Scale the visual to fill the space the caption leaves — tall phone canvases
+  // scale it up, tight landscape canvases scale it down.
+  requestAnimationFrame(() => {
+    const fit = v.querySelector('.fit');
+    const r = fit.getBoundingClientRect();
+    const cs = getComputedStyle(v);
+    const availW = (v.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) * 0.98;
+    const availH = (v.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)) * 0.96;
+    fit.style.zoom = Math.min(availW / r.width, availH / r.height);
+    document.title = 'ready';
+  });
+</script>
+</body>
+</html>

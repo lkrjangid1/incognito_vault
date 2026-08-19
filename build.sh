@@ -38,7 +38,7 @@ console.log(`manifests ok — v${c.version}`);
 
 # Where the Safari Xcode project keeps its embedded copy of the extension.
 # Set after `xcrun safari-web-extension-converter` generates the project.
-SAFARI_RESOURCES="safari/xcode/Incognito Vault/Incognito Vault Extension/Resources"
+SAFARI_RESOURCES="safari/xcode/Incognito Vault/Shared (Extension)/Resources"
 
 for p in "${TARGETS[@]}"; do
   out="dist/$p"

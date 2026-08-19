@@ -12,6 +12,7 @@
 
 body {
   width: 380px;
+  max-width: 100vw; /* iOS shows the popup as a device-width sheet */
   max-height: 560px;
   background: var(--ink);
   color: var(--text);
