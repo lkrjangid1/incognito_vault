@@ -16,7 +16,7 @@ import SafariServices
 typealias PlatformViewController = NSViewController
 #endif
 
-let extensionBundleIdentifier = "com.lkrjangid.incognito-vault.Extension"
+let extensionBundleIdentifier = "com.lkrjangid.incognito-vault.safari.Extension"
 
 class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMessageHandler {
 

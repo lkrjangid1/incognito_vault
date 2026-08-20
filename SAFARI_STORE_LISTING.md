@@ -29,8 +29,8 @@ New App, using the bundle ID below.
 |---|---|
 | **Name** (30 chars) | `Incognito Vault` (15) |
 | **Subtitle** (30 chars) | `Save Claude & ChatGPT chats` (27) |
-| **Bundle ID** (app) | `com.lkrjangid.incognito-vault` |
-| **Bundle ID** (extension) | `com.lkrjangid.incognito-vault.Extension` |
+| **Bundle ID** (app) | `com.lkrjangid.incognito-vault.safari` |
+| **Bundle ID** (extension) | `com.lkrjangid.incognito-vault.safari.Extension` |
 | **SKU** | `incognito-vault-001` |
 | **Primary language** | English (U.S.) |
 | **Primary category** | Productivity |

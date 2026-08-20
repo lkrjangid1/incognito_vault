@@ -666,7 +666,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari.Extension";
 				PRODUCT_NAME = "Incognito Vault Extension";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -700,7 +700,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari.Extension";
 				PRODUCT_NAME = "Incognito Vault Extension";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -742,7 +742,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari";
 				PRODUCT_NAME = "Incognito Vault";
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -783,7 +783,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari";
 				PRODUCT_NAME = "Incognito Vault";
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -821,7 +821,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari.Extension";
 				PRODUCT_NAME = "Incognito Vault Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -857,7 +857,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari.Extension";
 				PRODUCT_NAME = "Incognito Vault Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -898,7 +898,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari";
 				PRODUCT_NAME = "Incognito Vault";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
@@ -940,7 +940,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lkrjangid.incognito-vault.safari";
 				PRODUCT_NAME = "Incognito Vault";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
