@@ -24,9 +24,11 @@ esac
 node -e '
 const c = require("./chrome/manifest.json");
 const s = require("./safari/manifest.json");
-for (const [name, m] of [["chrome", c], ["safari", s]]) {
+// Chrome Web Store caps the description at 132; App Store validation caps a
+// Safari extension bundle at 112 (upload fails with ITMS error 90849 above it).
+for (const [name, m, limit] of [["chrome", c, 132], ["safari", s, 112]]) {
   const n = m.description.length;
-  if (n > 132) { console.error(`${name}: description is ${n} chars, limit is 132`); process.exit(1); }
+  if (n > limit) { console.error(`${name}: description is ${n} chars, limit is ${limit}`); process.exit(1); }
   if (!/^\d+(\.\d+){0,3}$/.test(m.version)) { console.error(`${name}: bad version: ${m.version}`); process.exit(1); }
 }
 if (c.version !== s.version) {

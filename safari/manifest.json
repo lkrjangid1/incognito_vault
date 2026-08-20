@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Incognito Vault",
   "version": "1.0.0",
-  "description": "Save Claude and ChatGPT incognito chats to Markdown with artifacts, keep a private local history, and resume any chat later.",
+  "description": "Save Claude and ChatGPT incognito chats as Markdown, keep a private local history, and resume any chat later.",
   "homepage_url": "https://github.com/lkrjangid1/incognito_vault",
   "permissions": ["storage"],
   "host_permissions": [
