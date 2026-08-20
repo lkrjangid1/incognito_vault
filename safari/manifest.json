@@ -18,7 +18,8 @@
       "platform/save.js",
       "background/resume.js",
       "background/main.js"
-    ]
+    ],
+    "persistent": false
   },
   "content_scripts": [
     {
