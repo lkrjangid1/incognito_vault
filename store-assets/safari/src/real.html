@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Incognito Vault — App Store screenshots from real captures</title>
+<style>
+  :root {
+    --ink: #101216;
+    --text: #e8e6df;
+    --muted: #8a8f98;
+    --accent: #7ee0b8;
+    --line: #262b33;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100vw; height: 100vh; overflow: hidden; }
+  body {
+    background:
+      radial-gradient(120vmin 90vmin at 85% -10%, rgba(126, 224, 184, 0.14), transparent 60%),
+      radial-gradient(140vmin 100vmin at -10% 110%, rgba(126, 224, 184, 0.07), transparent 55%),
+      linear-gradient(165deg, #14171c 0%, var(--ink) 55%, #0b0d10 100%);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7vmin 6vmin;
+    gap: 4vmin;
+  }
+
+  .caption { text-align: center; max-width: 88vmin; flex: none; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 1.6vmin;
+    font-size: 2.2vmin; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 2.8vmin;
+  }
+  .orb {
+    width: 3.4vmin; height: 3.4vmin;
+    border-radius: 50% 50% 45% 45%;
+    background:
+      radial-gradient(circle at 32% 30%, var(--ink) 0.36vmin, transparent 0.46vmin),
+      radial-gradient(circle at 66% 30%, var(--ink) 0.36vmin, transparent 0.46vmin),
+      linear-gradient(180deg, var(--accent) 55%, transparent 100%);
+    flex: none;
+  }
+  h1 { font-size: 6.4vmin; line-height: 1.12; font-weight: 800; letter-spacing: -0.015em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub { margin-top: 2.4vmin; font-size: 2.7vmin; line-height: 1.45; color: var(--muted); font-weight: 500; }
+
+  .visual {
+    flex: 1 1 auto; min-height: 0; min-width: 0; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Device-style frame around the real capture. */
+  .frame {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+    background: #000;
+  }
+  .frame img { display: block; }
+  .frame.device { border-radius: 56px; border-color: #31363f; }
+
+  /* Cropped zoom onto a region of a larger capture. */
+  .crop { position: relative; }
+  .crop img { position: absolute; }
+
+  @media (orientation: landscape) {
+    body { flex-direction: row; justify-content: center; align-items: stretch; padding: 0; gap: 0; }
+    .caption {
+      flex: 0 0 42%;
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      text-align: left; padding: 0 4vmin 0 8vmin; max-width: none;
+    }
+    h1 { font-size: 7.4vmin; }
+    .sub { font-size: 3vmin; max-width: 60vmin; }
+    .visual { padding: 6vmin 6vmin 6vmin 0; }
+  }
+
+  @media (max-aspect-ratio: 3/5) {
+    body { padding-top: 10vmin; }
+    h1 { font-size: 8vmin; }
+    .sub { font-size: 3.2vmin; margin-top: 3vmin; }
+    .kicker { font-size: 2.6vmin; margin-bottom: 3.4vmin; }
+  }
+</style>
+</head>
+<body>
+
+<section class="caption">
+  <div class="kicker"><span class="orb"></span> Incognito Vault</div>
+  <h1 id="headline"></h1>
+  <p class="sub" id="subline"></p>
+</section>
+
+<section class="visual" id="visual"></section>
+
+<script>
+  // Every visual is a REAL capture from store-assets/safari/ — no mockups.
+  const SHOTS = {
+    ip1: {
+      headline: 'Incognito chats vanish.<br><em>Yours don’t have to.</em>',
+      subline: 'A private, searchable vault for Claude and ChatGPT temporary chats — on your iPhone, nowhere else.',
+      visual: `<div class="frame device"><img src="../popup_bottom_sheet.png" width="900" /></div>`
+    },
+    ip2: {
+      headline: 'One tap, <em>before</em> you close the tab.',
+      subline: 'Save to Vault grabs the whole conversation from the page you’re reading — straight from Safari.',
+      visual: `<div class="frame device"><img src="../floating%20_button.png" width="900" /></div>`
+    },
+    pad1: {
+      headline: 'Your vault, one tap<br>from the <em>address bar</em>.',
+      subline: 'Save the current chat, search your history, resume or re-download any of them — right inside Safari.',
+      visual: `<div class="frame"><img src="../tab.png" width="1400" /></div>`
+    },
+    pad2: {
+      headline: 'Everything stays<br><em>on your iPad</em>.',
+      subline: 'No servers, no accounts, no analytics — chats save to Files as tidy Markdown ZIPs.',
+      visual: `<div class="frame device"><img src="../tab_2.png" width="1000" /></div>`
+    },
+    mac1: {
+      headline: 'Incognito chats vanish.<br><em>Yours don’t have to.</em>',
+      subline: 'A private, searchable vault for Claude and ChatGPT temporary chats — kept on your Mac, nowhere else.',
+      // Crop the dark band above Safari's toolbar out of the capture.
+      visual: `<div class="frame crop" style="width:1500px;height:930px;">
+        <img src="../desktop.png" style="width:1500px;margin-top:-34px;" />
+      </div>`
+    },
+    mac2: {
+      headline: 'One click in<br>Safari’s <em>toolbar</em>.',
+      subline: 'Save the current chat, search your history, resume any of them — and every save lands as plain Markdown.',
+      // Zoom onto the toolbar + popup region of the desktop capture.
+      visual: `<div class="frame crop" style="width:1100px;height:960px;">
+        <img src="../desktop.png" style="width:4200px;margin-left:-750px;margin-top:-110px;" />
+      </div>`
+    }
+  };
+
+  const q = new URLSearchParams(location.search);
+  const shot = SHOTS[q.get('shot') || 'ip1'];
+  document.getElementById('headline').innerHTML = shot.headline;
+  document.getElementById('subline').innerHTML = shot.subline;
+  const v = document.getElementById('visual');
+  v.innerHTML = '<div class="fit">' + shot.visual + '</div>';
+
+  // Scale the framed capture to fill the space the caption leaves.
+  const fit = v.querySelector('.fit');
+  const ready = () => requestAnimationFrame(() => requestAnimationFrame(() => {
+    const r = fit.getBoundingClientRect();
+    const cs = getComputedStyle(v);
+    const availW = (v.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) * 0.96;
+    const availH = (v.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)) * 0.96;
+    fit.style.zoom = Math.min(availW / r.width, availH / r.height);
+    document.title = 'ready';
+  }));
+  const img = v.querySelector('img');
+  if (img.complete) ready(); else img.addEventListener('load', ready);
+</script>
+</body>
+</html>

@@ -159,18 +159,20 @@ demo account in the Review section if you don't want reviewers using their own.
 
 ## Screenshots
 
-All generated, exact-size, 24-bit RGB with no alpha, in `store-assets/safari/`.
-Upload in numbered order — screenshot 1 carries the pitch on its own.
+All exact-size, 24-bit RGB with no alpha, in `store-assets/safari/`. Every
+visual is a **real capture** of the extension running in Safari (the raw
+captures sit in the folder root: `desktop.png`, `floating _button.png`,
+`popup_bottom_sheet.png`, `tab.png`, `tab_2.png`), framed on the brand
+background with a caption. Upload in numbered order.
 
-| # | File name | Shows | Says |
+| Slot | File | Real capture used | Says |
 |---|---|---|---|
-| 1 | `shot-1-history.png` | Popup with five saved chats | Incognito chats vanish — yours don't have to |
-| 2 | `shot-2-save.png` | Chat page, Save to Vault button + saved toast | One click, before you close the tab |
-| 3 | `shot-3-zip.png` | ZIP → folder tree → Markdown front-matter | One ZIP per chat, plain Markdown inside |
-| 4 | `shot-4-privacy.png` | On-device / click-only / open-source checklist | No servers, no accounts, no analytics |
-| 5 | `shot-5-resume.png` | Popup row → new temporary session, composer pre-filled | Pick it back up where you left off |
-
-Sizes per device (each folder holds all five shots):
+| iPhone 1 | `iphone-6.7/shot-1-vault.png` | `popup_bottom_sheet.png` — popup with a saved chat | Incognito chats vanish — yours don't have to |
+| iPhone 2 | `iphone-6.7/shot-2-save.png` | `floating _button.png` — Save to Vault on a chat | One tap, before you close the tab |
+| iPad 1 | `ipad-13/shot-1-popover.png` | `tab.png` — popover with saved chat + fab | Your vault, one tap from the address bar |
+| iPad 2 | `ipad-13/shot-2-private.png` | `tab_2.png` — popover empty state | Everything stays on your iPad |
+| Mac 1 | `mac/shot-1-overview.png` | `desktop.png` — full Safari window | Incognito chats vanish — yours don't have to |
+| Mac 2 | `mac/shot-2-popup.png` | `desktop.png` — zoom on toolbar + popup | One click in Safari's toolbar |
 
 | Folder | Size | App Store slot |
 |---|---|---|
@@ -178,19 +180,18 @@ Sizes per device (each folder holds all five shots):
 | `store-assets/safari/iphone-6.7/` | 1284 × 2778 | iPhone 6.7"/6.9" display (accepted: 1242×2688, 2688×1242, 1284×2778, 2778×1284) |
 | `store-assets/safari/ipad-13/` | 2064 × 2752 | iPad 13" display (accepted: 2064×2752, 2752×2064, 2048×2732, 2732×2048) |
 
-The popup, in-page button, and toast in the shots are rendered from the
-extension's real palette and markup (`shared/popup/popup.css`,
-`shared/content/content.css`) — not a redrawn mockup.
-
-**Regenerating after a UI or copy change:** the master template is
-`store-assets/safari/src/template.html` (`?shot=1`…`?shot=5`; it adapts to any
-canvas size/orientation). Render any size with headless Chromium, e.g.:
+**Regenerating after new captures:** drop the raw screenshots into
+`store-assets/safari/`, adjust the image references/captions in
+`store-assets/safari/src/real.html` (`?shot=ip1|ip2|pad1|pad2|mac1|mac2`; the
+page adapts to any canvas size), then render with headless Chromium, e.g.:
 
 ```bash
 npx playwright screenshot --viewport-size=2880,1800 \
-  "file://$PWD/store-assets/safari/src/template.html?shot=1" \
-  store-assets/safari/mac/shot-1-history.png
+  "file://$PWD/store-assets/safari/src/real.html?shot=mac1" \
+  store-assets/safari/mac/shot-1-overview.png
 ```
+
+(`src/template.html` is the older all-mockup generator, kept for reference.)
 
 ---
 
